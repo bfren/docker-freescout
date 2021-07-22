@@ -8,4 +8,6 @@ export BF_E=`basename ${0}`
 # Run artisan scheduled tasks.
 #======================================================================================================================
 
-php ${FREESCOUT_SRC}/artisan schedule:run
+php ${FREESCOUT_SRC}/artisan freescout:fetch-monitor
+php ${FREESCOUT_SRC}/artisan freescout:check-conv-viewers
+php ${FREESCOUT_SRC}/artisan freescout:fetch-emails

@@ -8,4 +8,4 @@ export BF_E=`basename ${0}`
 # Run artisan scheduled tasks.
 #======================================================================================================================
 
-freescout-queue-work
+freescout-schedule-run
