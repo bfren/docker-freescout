@@ -5,7 +5,7 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Run artisan scheduled tasks.
+# Run artisan work queue.
 #======================================================================================================================
 
-s6-setuidgid www freescout-schedule-run
+php ${FREESCOUT_SRC}/artisan queue:work --queue='emails,default' --sleep=5 --tries=1 >> /dev/null 2>&1
