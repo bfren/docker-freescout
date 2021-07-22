@@ -1,4 +1,4 @@
-FROM bfren/nginx-php:php8.0-2.2.4
+FROM bfren/nginx-php:php7.4-2.2.4
 
 COPY ./overlay /
 COPY ./FREESCOUT_REVISION /tmp/FREESCOUT_VERSION
