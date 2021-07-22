@@ -31,7 +31,7 @@ apk add --no-cache \
     php7-json=${PHP_VERSION} \
     php7-mbstring=${PHP_VERSION} \
     php7-mysqli=${PHP_VERSION} \
-    php7-xml =${PHP_VERSION} \
+    php7-xml=${PHP_VERSION} \
     php7-zip=${PHP_VERSION}
 bf-done
 
