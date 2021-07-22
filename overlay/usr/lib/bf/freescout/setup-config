@@ -23,29 +23,4 @@ export BF_E=`basename ${0}`
 bf-debug "Generating ${FREESCOUT_ENV}."
 esh -o ${FREESCOUT_ENV} \
     ${BF_TEMPLATES}/.env.esh
-
-# run artisan setup
-cd ${FREESCOUT_SRC}
-
-bf-debug "Generate key."
-php artisan key:generate
-
-bf-debug "Clear cache."
-php artisan freescout:clear-cache
-php artisan config:clear
-
-bf-debug "Link storage."
-php artisan storage:link
-
-bf-debug "Migrate database."
-php artisan migrate --force
-
-bf-debug "Create admin user."
-php artisan -n freescout:create-user \
-    --role=admin \
-    --firstName="${FREESCOUT_ADMIN_FIRSTNAME}" \
-    --lastName="${FREESCOUT_ADMIN_LASTNAME}" \
-    --email="${FREESCOUT_ADMIN_EMAIL}" \
-    --password="${FREESCOUT_ADMIN_PASS}"
-
 bf-done
