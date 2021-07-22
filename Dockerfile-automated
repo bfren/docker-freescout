@@ -2,7 +2,7 @@ FROM bfren/nginx-php:auto
 
 COPY ./overlay /
 COPY ./FREESCOUT_REVISION /tmp/FREESCOUT_VERSION
-COPY ./PHP_REVISION /tmp/PHP_VERSION
+COPY ./PHP_BUILD /tmp/PHP_VERSION
 
 COPY ./overlay /
 
