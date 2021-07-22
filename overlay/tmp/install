@@ -68,8 +68,8 @@ bf-done
 #======================================================================================================================
 
 bf-echo "Setting permissions on ${FREESCOUT_SRC}..."
-bf-ch -o www:www -m 0775 -t d ${FREESCOUT_SRC}
-bf-ch -o www:www -m 0664 -t f ${FREESCOUT_SRC}
+bf-ch -o www:www -m 0755 -t d ${FREESCOUT_SRC}
+bf-ch -o www:www -m 0644 -t f ${FREESCOUT_SRC}
 bf-done
 
 

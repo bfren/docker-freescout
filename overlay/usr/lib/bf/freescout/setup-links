@@ -35,3 +35,11 @@ create-if-not-link() {
 create-if-not-link "${FREESCOUT_ENV_SRC}" "${FREESCOUT_ENV}"
 create-if-not-link "${FREESCOUT_MODULES_SRC}" "${FREESCOUT_MODULES}"
 create-if-not-link "${FREESCOUT_STORAGE_SRC}" "${FREESCOUT_STORAGE}"
+
+
+#======================================================================================================================
+# Set permissions.
+#======================================================================================================================
+
+bf-ch -o www:www -m 0755 -t d ${FREESCOUT}
+bf-ch -o www:www -m 0644 -t f ${FREESCOUT}
