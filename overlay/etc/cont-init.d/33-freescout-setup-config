@@ -5,15 +5,15 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# If FREESCOUT_ENV doesn't exist, the setup has gone wrong.
+# If FREESCOUT_ENV doesn't exist, the source files have not been downloaded correctly.
 #======================================================================================================================
 
-[[ ! -f ${FREESCOUT_ENV} ]] && bf-error "${FREESCOUT_ENV} does not exist."
+[[ ! -d ${FREESCOUT_ENV} ]] && bf-error "${FREESCOUT_ENV} does not exist."
 
 
 #======================================================================================================================
-# Run setup content executable.
+# Run setup config executable.
 #======================================================================================================================
 
-${FREESCOUT_LIB}/setup-content
+${FREESCOUT_LIB}/setup-config
 freescout-setup-complete

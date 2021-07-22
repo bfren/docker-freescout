@@ -5,14 +5,14 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# If FREESCOUT_SRC doesn't exist, the source files have not been downloaded correctly.
+# If FREESCOUT_SRC doesn't exist, the setup has gone wrong.
 #======================================================================================================================
 
-[[ ! -d ${FREESCOUT_SRC} ]] && bf-error "FreeScout source files cannot be found."
+[[ ! -f ${FREESCOUT_SRC} ]] && bf-error "${FREESCOUT_SRC} does not exist."
 
 
 #======================================================================================================================
-# Run setup config executable.
+# Run setup content executable.
 #======================================================================================================================
 
-${FREESCOUT_LIB}/setup-config
+${FREESCOUT_LIB}/setup-content
