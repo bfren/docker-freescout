@@ -1,11 +1,11 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv sh
 
 set -euo pipefail
-export BF_E=`basename ${0}`
+export BF_E="${PWD##*/}/$(basename ${0})"
 
 
 #======================================================================================================================
-# Run artisan scheduled tasks.
+# Run /usr/local/bin/freescout-queue-work executable.
 #======================================================================================================================
 
-#s6-setuidgid www freescout-queue-work
+freescout-queue-work
