@@ -25,12 +25,21 @@ esh -o ${FREESCOUT_ENV} \
     ${BF_TEMPLATES}/.env.esh
 
 # run artisan setup
-bf-debug "Running artisan setup."
 cd ${FREESCOUT_SRC}
+
+bf-debug "Generate key."
 php artisan key:generate
+
+bf-debug "Clear cache."
 php artisan freescout:clear-cache
+
+bf-debug "Link storage."
 php artisan storage:link
-php artisan migrate
+
+bf-debug "Migrate database."
+php artisan migrate --force#
+
+bf-debug "Create admin user."
 php artisan -n freescout:create-user \
     --role=admin \
     --firstName="${FREESCOUT_ADMIN_FIRSTNAME}" \
