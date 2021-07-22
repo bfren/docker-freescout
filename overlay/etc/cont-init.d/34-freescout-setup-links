@@ -15,4 +15,4 @@ export BF_E=`basename ${0}`
 # Run setup links executable.
 #======================================================================================================================
 
-${FREESCOUT_LIB}/setup-config
+${FREESCOUT_LIB}/setup-links
