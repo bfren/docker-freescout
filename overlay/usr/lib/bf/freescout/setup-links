@@ -20,7 +20,7 @@ create-if-not-link() {
     if [ ! -L ${PATH_FROM} ] ; then
 
         bf-echo "Linking ${PATH_FROM} to ${PATH_TO}..."
-        ln ${PATH_TO} ${PATH_FROM}
+        ln -s ${PATH_TO} ${PATH_FROM}
         bf-done
 
     fi
