@@ -18,7 +18,7 @@ export BF_E=`basename ${0}`
 # generate config from the template
 bf-debug "Generating ${FREESCOUT_ENV}."
 esh -o ${FREESCOUT_ENV} \
-    ${BF_TEMPLATES}/.env.php.esh
+    ${BF_TEMPLATES}/.env.esh
 
 # run artisan setup
 bf-debug "Running artisan setup."
