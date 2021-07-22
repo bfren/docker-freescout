@@ -11,7 +11,7 @@ export BF_E=`basename ${0}`
 #   1   File / directory path
 #======================================================================================================================
 
-delete_if_not_link () {
+delete-if-not-link () {
 
     PATH=${1}
 
@@ -34,9 +34,9 @@ if [ "$(ls -A ${FREESCOUT})" ] ; then
 
     bf-debug "${FREESCOUT} is not empty."
 
-    delete_if_not_link "${FREESCOUT_ENV_SRC}"
-    delete_if_not_link "${FREESCOUT_MODULES_SRC}"
-    delete_if_not_link "${FREESCOUT_STORAGE_SRC}"
+    delete-if-not-link "${FREESCOUT_ENV_SRC}"
+    delete-if-not-link "${FREESCOUT_MODULES_SRC}"
+    delete-if-not-link "${FREESCOUT_STORAGE_SRC}"
 
 
 #======================================================================================================================

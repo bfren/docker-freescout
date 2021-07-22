@@ -12,7 +12,7 @@ export BF_E=`basename ${0}`
 #   2   To file / directory path
 #======================================================================================================================
 
-create_if_not_link() {
+create-if-not-link() {
 
     PATH_FROM=${0}
     PATH_TO=${1}
@@ -32,6 +32,6 @@ create_if_not_link() {
 # Link source content to /data.
 #======================================================================================================================
 
-create_if_not_link ${FREESCOUT_ENV_SRC} ${FREESCOUT_ENV}
-create_if_not_link ${FREESCOUT_MODULES_SRC} ${FREESCOUT_MODULES}
-create_if_not_link ${FREESCOUT_STORAGE_SRC} ${FREESCOUT_STORAGE}
+create-if-not-link ${FREESCOUT_ENV_SRC} ${FREESCOUT_ENV}
+create-if-not-link ${FREESCOUT_MODULES_SRC} ${FREESCOUT_MODULES}
+create-if-not-link ${FREESCOUT_STORAGE_SRC} ${FREESCOUT_STORAGE}
