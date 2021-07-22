@@ -45,6 +45,10 @@ if [ "$(ls -A ${FREESCOUT})" ] ; then
 
 else
 
+    bf-echo "Moving ${FREESCOUT_MODULES_SRC} files and directories..."
+    mv ${FREESCOUT_MODULES_SRC} ${FREESCOUT}
+    bf-done
+
     bf-echo "Moving ${FREESCOUT_STORAGE_SRC} files and directories..."
     mv ${FREESCOUT_STORAGE_SRC} ${FREESCOUT}
     bf-done
