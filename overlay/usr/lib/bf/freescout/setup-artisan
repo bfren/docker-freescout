@@ -28,7 +28,7 @@ php artisan freescout:clear-cache
 php artisan config:clear
 
 bf-debug "Link storage."
-php artisan storage:link
+ln -s ${FREESCOUT_STORAGE_APP_PUBLIC} ${FREESCOUT_PUBLIC_STORAGE_SRC}
 
 bf-debug "Migrate database."
 php artisan migrate --force
