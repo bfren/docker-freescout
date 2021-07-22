@@ -55,8 +55,8 @@ bf-debug "FreeScout version ${VERSION}."
 # Download and install FreeScout.
 #======================================================================================================================
 
-bf-echo "Cloning FreeScout source code into ${FREESCOUT_SRC}"
-git clone https://github.com/freescout-helpdesk/freescout ${FREESCOUT_SRC}
+bf-echo "Cloning FreeScout v${FREESCOUT_VERSION} into ${FREESCOUT_SRC}"
+git clone -depth 1 --branch ${FREESCOUT_VERSION} https://github.com/freescout-helpdesk/freescout ${FREESCOUT_SRC}
 bf-done
 
 
