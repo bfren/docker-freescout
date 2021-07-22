@@ -8,7 +8,7 @@ export BF_E=`basename ${0}`
 # If FREESCOUT_ENV doesn't exist, the setup has gone wrong.
 #======================================================================================================================
 
-[[ ! -L ${FREESCOUT_ENV_SRC} ]] && bf-error "FreeScout .env is not linked correctly."
+[[ ! -f ${FREESCOUT_ENV} ]] && bf-error "${FREESCOUT_ENV} does not exist."
 
 
 #======================================================================================================================
@@ -16,3 +16,4 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 ${FREESCOUT_LIB}/setup-config
+freescout-setup-complete

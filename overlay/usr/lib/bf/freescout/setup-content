@@ -27,30 +27,6 @@ delete_if_not_link () {
 
 
 #======================================================================================================================
-# Create a link if it does not already exist.
-#
-# Arguments
-#   1   From file / directory path
-#   2   To file / directory path
-#======================================================================================================================
-
-create_if_not_link() {
-
-    PATH_FROM=${0}
-    PATH_TO=${1}
-
-    if [ ! -L ${PATH_FROM} ] ; then
-
-        bf-echo "Linking ${PATH_FROM} to ${PATH_TO}..."
-        ln ${PATH_TO} ${PATH_FROM}
-        bf-done
-
-    fi
-
-}
-
-
-#======================================================================================================================
 # If /freescout already has content in it, delete source content so it can be linked to /freescout content...
 #======================================================================================================================
 
@@ -74,12 +50,3 @@ else
     bf-done
 
 fi
-
-
-#======================================================================================================================
-# Link source content to /data.
-#======================================================================================================================
-
-create_if_not_link ${FREESCOUT_ENV_SRC} ${FREESCOUT_ENV}
-create_if_not_link ${FREESCOUT_MODULES_SRC} ${FREESCOUT_MODULES}
-create_if_not_link ${FREESCOUT_STORAGE_SRC} ${FREESCOUT_STORAGE}

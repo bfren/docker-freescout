@@ -1,0 +1,37 @@
+#!/usr/bin/with-contenv bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Create a link if it does not already exist.
+#
+# Arguments
+#   1   From file / directory path
+#   2   To file / directory path
+#======================================================================================================================
+
+create_if_not_link() {
+
+    PATH_FROM=${0}
+    PATH_TO=${1}
+
+    if [ ! -L ${PATH_FROM} ] ; then
+
+        bf-echo "Linking ${PATH_FROM} to ${PATH_TO}..."
+        ln ${PATH_TO} ${PATH_FROM}
+        bf-done
+
+    fi
+
+}
+
+
+#======================================================================================================================
+# Link source content to /data.
+#======================================================================================================================
+
+create_if_not_link ${FREESCOUT_ENV_SRC} ${FREESCOUT_ENV}
+create_if_not_link ${FREESCOUT_MODULES_SRC} ${FREESCOUT_MODULES}
+create_if_not_link ${FREESCOUT_STORAGE_SRC} ${FREESCOUT_STORAGE}
