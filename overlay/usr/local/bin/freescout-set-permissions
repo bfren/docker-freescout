@@ -5,10 +5,10 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Run scheduled tasks.
+# Set permissions on files.
 #======================================================================================================================
 
-php ${FREESCOUT_SRC}/artisan freescout:fetch-monitor
-php ${FREESCOUT_SRC}/artisan freescout:check-conv-viewers
-php ${FREESCOUT_SRC}/artisan freescout:fetch-emails >> /data/storage/logs/fetch-emails.log
-freescount-set-permissions
+bf-echo "Setting permissions on ${FREESCOUT}..."
+bf-ch -o www:www -m 0755 -t d ${FREESCOUT}
+bf-ch -o www:www -m 0644 -t f ${FREESCOUT}
+bf-done

@@ -62,7 +62,4 @@ fi
 # Set permissions on files.
 #======================================================================================================================
 
-bf-echo "Setting permissions on ${FREESCOUT}..."
-bf-ch -o www:www -m 0755 -t d ${FREESCOUT}
-bf-ch -o www:www -m 0644 -t f ${FREESCOUT}
-bf-done
+freescout-set-permissions
