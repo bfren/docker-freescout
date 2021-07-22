@@ -48,7 +48,7 @@ FREESCOUT_SRC=${SRC}/${FREESCOUT}
 bf-debug "FreeScout source directory: ${FREESCOUT_SRC}."
 
 FREESCOUT_VERSION=$(cat FREESCOUT_VERSION)
-bf-debug "FreeScout version ${VERSION}."
+bf-debug "FreeScout version ${FREESCOUT_VERSION}."
 
 
 #======================================================================================================================
