@@ -8,4 +8,4 @@ export BF_E="${PWD##*/}/$(basename ${0})"
 # Run /usr/local/bin/freescout-schedule-run executable.
 #======================================================================================================================
 
-freescout-schedule-run
+#freescout-schedule-run

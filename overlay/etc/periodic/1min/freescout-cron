@@ -8,4 +8,4 @@ export BF_E=`basename ${0}`
 # Run artisan scheduled tasks.
 #======================================================================================================================
 
-#s6-setuidgid www freescout-queue-work
+freescout-queue-work
