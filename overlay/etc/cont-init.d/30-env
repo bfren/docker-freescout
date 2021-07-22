@@ -10,4 +10,11 @@ export BF_E=`basename ${0}`
 
 bf-env "FREESCOUT_LIB" "${BF_LIB}/freescout"
 
-bf-env "FREESCOUT_ENV" "${FREESCOUT_SRC}/.env"
+bf-env "FREESCOUT" "/data"
+bf-env "FREESCOUT_ENV" "${FREESCOUT}/.env"
+bf-env "FREESCOUT_MODULES" "${FREESCOUT}/Modules"
+bf-env "FREESCOUT_STORAGE" "${FREESCOUT}/storage"
+
+bf-env "FREESCOUT_ENV_SRC" "${FREESCOUT_SRC}/.env"
+bf-env "FREESCOUT_MODULES_SRC" "${FREESCOUT_SRC}/Modules"
+bf-env "FREESCOUT_STORAGE_SRC" "${FREESCOUT_SRC}/storage"

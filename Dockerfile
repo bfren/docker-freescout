@@ -7,3 +7,5 @@ COPY ./PHP_BUILD /tmp/PHP_VERSION
 COPY ./overlay /
 
 RUN bf-install
+
+VOLUME [ "/freescout" ]
