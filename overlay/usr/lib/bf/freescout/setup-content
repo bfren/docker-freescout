@@ -13,12 +13,12 @@ export BF_E=`basename ${0}`
 
 delete-if-not-link () {
 
-    PATH=${1}
+    CHECK_PATH=${1}
 
-    if [ ! -L ${PATH} ] ; then
+    if [ ! -L ${CHECK_PATH} ] ; then
 
-        bf-echo "Deleting ${PATH} so it can be turned into a symlink."
-        rm -rf "${PATH}"
+        bf-echo "Deleting ${CHECK_PATH} so it can be turned into a symlink."
+        rm -rf ${CHECK_PATH}
         bf-done
 
     fi
