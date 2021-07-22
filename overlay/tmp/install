@@ -11,7 +11,7 @@ export BF_E=`basename ${0}`
 cd /tmp
 
 PHP_VERSION=$(cat PHP_VERSION)
-bf-debug "PHP version ${VERSION}."
+bf-debug "PHP version ${PHP_VERSION}."
 
 
 #======================================================================================================================
