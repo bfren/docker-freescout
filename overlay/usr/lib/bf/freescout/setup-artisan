@@ -5,23 +5,15 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# If an existing installation was detected, do not proceed.
-#======================================================================================================================
-
-if [ "${FREESCOUT_INSTALLED-}" = "1" ] ; then
-    bf-echo "Existing installation detected - do not run artisan setup."
-    exit 0
-fi
-
-
-#======================================================================================================================
-# Run artisan setup routines.
+# Run artisan setup routines, skipping key and user creation if app has already been set up.
 #======================================================================================================================
 
 cd ${FREESCOUT_SRC}
 
-bf-debug "Generate key."
-php artisan key:generate
+if [ "${FREESCOUT_INSTALLED-}" -ne "1" ] ; then
+    bf-debug "Generate key."
+    php artisan key:generate
+fi
 
 bf-debug "Clear cache."
 php artisan freescout:clear-cache
@@ -32,12 +24,16 @@ php artisan config:clear
 bf-debug "Migrate database."
 php artisan migrate --force
 
-bf-debug "Create admin user."
-php artisan -n freescout:create-user \
-    --role=admin \
-    --firstName="${FREESCOUT_ADMIN_FIRSTNAME}" \
-    --lastName="${FREESCOUT_ADMIN_LASTNAME}" \
-    --email="${FREESCOUT_ADMIN_EMAIL}" \
-    --password="${FREESCOUT_ADMIN_PASS}"
+if [ "${FREESCOUT_INSTALLED-}" -ne "1" ] ; then
 
-bf-done
+    bf-debug "Create admin user."
+    php artisan -n freescout:create-user \
+        --role=admin \
+        --firstName="${FREESCOUT_ADMIN_FIRSTNAME}" \
+        --lastName="${FREESCOUT_ADMIN_LASTNAME}" \
+        --email="${FREESCOUT_ADMIN_EMAIL}" \
+        --password="${FREESCOUT_ADMIN_PASS}"
+
+    bf-done
+
+fi
