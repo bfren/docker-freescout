@@ -56,7 +56,7 @@ bf-debug "FreeScout version ${FREESCOUT_VERSION}."
 #======================================================================================================================
 
 bf-echo "Cloning FreeScout v${FREESCOUT_VERSION} into ${FREESCOUT_SRC}"
-git clone -depth 1 --branch ${FREESCOUT_VERSION} https://github.com/freescout-helpdesk/freescout ${FREESCOUT_SRC}
+git clone --depth 1 --branch ${FREESCOUT_VERSION} https://github.com/freescout-helpdesk/freescout ${FREESCOUT_SRC}
 bf-done
 
 
