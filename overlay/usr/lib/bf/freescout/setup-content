@@ -2,3 +2,84 @@
 
 set -euo pipefail
 export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Delete a file or directory if it is not a link.
+#
+# Arguments
+#   1   File / directory path
+#======================================================================================================================
+
+delete_if_not_link () {
+
+    PATH=${1}
+
+    if [ ! -L ${PATH} ] ; then
+
+        bf-echo "Deleting ${PATH} so it can be turned into a symlink."
+        rm -rf "${PATH}"
+        bf-done
+
+    fi
+
+}
+
+
+#======================================================================================================================
+# Create a link if it does not already exist.
+#
+# Arguments
+#   1   From file / directory path
+#   2   To file / directory path
+#======================================================================================================================
+
+create_if_not_link() {
+
+    PATH_FROM=${0}
+    PATH_TO=${1}
+
+    if [ ! -L ${PATH_FROM} ] ; then
+
+        bf-echo "Linking ${PATH_FROM} to ${PATH_TO}..."
+        ln ${PATH_TO} ${PATH_FROM}
+        bf-done
+
+    fi
+
+}
+
+
+#======================================================================================================================
+# If /freescout already has content in it, delete source content so it can be linked to /freescout content...
+#======================================================================================================================
+
+if [ "$(ls -A ${FREESCOUT})" ] ; then
+
+    bf-debug "${FREESCOUT} is not empty."
+
+    delete_if_not_link "${FREESCOUT_ENV_SRC}"
+    delete_if_not_link "${FREESCOUT_MODULES_SRC}"
+    delete_if_not_link "${FREESCOUT_STORAGE_SRC}"
+
+
+#======================================================================================================================
+# ...otherwise, move all files and directories in source storage to /freescout/storage.
+#======================================================================================================================
+
+else
+
+    bf-echo "Moving ${FREESCOUT_STORAGE_SRC} files and directories..."
+    mv ${FREESCOUT_STORAGE_SRC} ${FREESCOUT}
+    bf-done
+
+fi
+
+
+#======================================================================================================================
+# Link source content to /data.
+#======================================================================================================================
+
+create_if_not_link ${FREESCOUT_ENV_SRC} ${FREESCOUT_ENV}
+create_if_not_link ${FREESCOUT_MODULES_SRC} ${FREESCOUT_MODULES}
+create_if_not_link ${FREESCOUT_STORAGE_SRC} ${FREESCOUT_STORAGE}
