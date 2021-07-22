@@ -8,4 +8,4 @@ COPY ./overlay /
 
 RUN bf-install
 
-VOLUME [ "/freescout" ]
+VOLUME [ "/data" ]
