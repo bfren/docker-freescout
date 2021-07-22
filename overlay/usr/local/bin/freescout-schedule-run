@@ -8,4 +8,4 @@ export BF_E=`basename ${0}`
 # Run artisan scheduled tasks.
 #======================================================================================================================
 
-php ${FREESCOUT_SRC}/artisan schedule:run >> /dev/null 2>&1
+php ${FREESCOUT_SRC}/artisan schedule:run
