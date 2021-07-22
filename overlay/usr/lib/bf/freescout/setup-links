@@ -33,5 +33,5 @@ create-if-not-link() {
 #======================================================================================================================
 
 create-if-not-link "${FREESCOUT_ENV_SRC}" "${FREESCOUT_ENV}"
-create-if-not-link "${FREESCOUT_MODULES_SRC}"" ${FREESCOUT_MODULES}"
-create-if-not-link "${FREESCOUT_STORAGE_SRC}" ${FREESCOUT_STORAGE}""
+create-if-not-link "${FREESCOUT_MODULES_SRC}" "${FREESCOUT_MODULES}"
+create-if-not-link "${FREESCOUT_STORAGE_SRC}" "${FREESCOUT_STORAGE}"
