@@ -9,11 +9,11 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 # ensure all required environment variables are set
-[[ -z "${FREESCOUT_APP_URL-}" ]] && bf-error "WP_DB_NAME must be set."
-[[ -z "${FREESCOUT_DB_NAME-}" ]] && bf-error "WP_DB_NAME must be set."
-[[ -z "${FREESCOUT_DB_USER-}" ]] && bf-error "WP_DB_USER must be set."
-[[ -z "${FREESCOUT_DB_PASS-}" ]] && bf-error "WP_DB_PASS must be set."
-[[ -z "${FREESCOUT_DB_HOST-}" ]] && bf-error "WP_DB_HOST must be set."
+[[ -z "${FREESCOUT_APP_URL-}" ]] && bf-error "FREESCOUT_APP_URL must be set."
+[[ -z "${FREESCOUT_DB_NAME-}" ]] && bf-error "FREESCOUT_DB_NAME must be set."
+[[ -z "${FREESCOUT_DB_USER-}" ]] && bf-error "FREESCOUT_DB_USER must be set."
+[[ -z "${FREESCOUT_DB_PASS-}" ]] && bf-error "FREESCOUT_DB_PASS must be set."
+[[ -z "${FREESCOUT_DB_HOST-}" ]] && bf-error "FREESCOUT_DB_HOST must be set."
 
 # generate config from the template
 bf-debug "Generating ${FREESCOUT_ENV}."
