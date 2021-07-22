@@ -10,4 +10,4 @@ export BF_E=`basename ${0}`
 
 php ${FREESCOUT_SRC}/artisan freescout:fetch-monitor
 php ${FREESCOUT_SRC}/artisan freescout:check-conv-viewers
-php ${FREESCOUT_SRC}/artisan freescout:fetch-emails >> /dev/null 2>&1
+php ${FREESCOUT_SRC}/artisan freescout:fetch-emails >> /data/storage/logs/fetch-emails.log
