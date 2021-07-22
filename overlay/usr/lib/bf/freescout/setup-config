@@ -37,7 +37,7 @@ bf-debug "Link storage."
 php artisan storage:link
 
 bf-debug "Migrate database."
-php artisan migrate --force#
+php artisan migrate --force
 
 bf-debug "Create admin user."
 php artisan -n freescout:create-user \
