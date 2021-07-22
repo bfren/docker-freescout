@@ -38,6 +38,8 @@ if [ "$(ls -A ${FREESCOUT})" ] ; then
     delete-if-not-link "${FREESCOUT_MODULES_SRC}"
     delete-if-not-link "${FREESCOUT_STORAGE_SRC}"
 
+    bf-env "FREESCOUT_INSTALLED" "1"
+
 
 #======================================================================================================================
 # ...otherwise, move all files and directories in source storage to /freescout/storage.
