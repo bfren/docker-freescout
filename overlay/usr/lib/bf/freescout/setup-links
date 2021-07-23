@@ -36,3 +36,10 @@ create-if-not-link "${FREESCOUT_ENV_SRC}" "${FREESCOUT_ENV}"
 create-if-not-link "${FREESCOUT_MODULES_SRC}" "${FREESCOUT_MODULES}"
 create-if-not-link "${FREESCOUT_STORAGE_SRC}" "${FREESCOUT_STORAGE}"
 create-if-not-link "${FREESCOUT_PUBLIC_STORAGE_SRC}" "${FREESCOUT_STORAGE_APP_PUBLIC}"
+
+bf-debug "Install modules:"
+for FILE in ${FREESCOUT_MODULES}/* ; do
+    if [ -d "${FILE}" ] ; then
+        create-if-not-link "${FREESCOUT_MODULES}/${MODULE}/Public" "${FREESCOUT_PUBLIC_MODULES_SRC}/${MODULE,,}"
+    fi
+done
