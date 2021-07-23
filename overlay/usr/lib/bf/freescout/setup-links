@@ -14,13 +14,13 @@ export BF_E=`basename ${0}`
 
 create-if-not-link() {
 
-    PATH_FROM=${1}
-    PATH_TO=${2}
+    PATH_LINK=${1}
+    PATH_TARGET=${2}
 
-    if [ ! -L ${PATH_FROM} ] ; then
+    if [ ! -L ${PATH_LINK} ] ; then
 
-        bf-echo "Linking ${PATH_FROM} to ${PATH_TO}..."
-        ln -s ${PATH_TO} ${PATH_FROM}
+        bf-echo "Linking ${PATH_LINK} to ${PATH_TARGET}..."
+        ln -s ${PATH_TARGET} ${PATH_LINK}
         bf-done
 
     fi
