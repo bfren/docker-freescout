@@ -17,6 +17,8 @@ fi
 
 bf-debug "Clear cache."
 php artisan freescout:clear-cache
+
+bf-debug "Clear config."
 php artisan config:clear
 
 # we don't use artisan storage:link because we've moved the storage location
@@ -37,3 +39,6 @@ if [ "${FREESCOUT_INSTALLED-}" -ne "1" ] ; then
     bf-done
 
 fi
+
+bf-debug "Install modules."
+php artisan freescout:module-install --no-ansi
