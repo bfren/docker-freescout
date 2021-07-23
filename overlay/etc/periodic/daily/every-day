@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Run artisan scheduled tasks.
+#======================================================================================================================
+
+php ${FREESCOUT_SRC}/artisan freescout:module-check-licenses

@@ -8,4 +8,6 @@ export BF_E=`basename ${0}`
 # Run artisan scheduled tasks.
 #======================================================================================================================
 
-freescout-schedule-run
+php ${FREESCOUT_SRC}/artisan queue:restart
+php ${FREESCOUT_SRC}/artisan freescout:update-folder-counters
+freescout-set-permissions > /dev/null 2>&1
