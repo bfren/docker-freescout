@@ -41,8 +41,10 @@ if [ "${FREESCOUT_INSTALLED-}" -ne "1" ] ; then
 fi
 
 bf-debug "Install modules:"
-for m in ${FREESCOUT_MODULES}/* ; do
-    [[ -d "$m" ]] \
-        && bf-debug "  $m" \
-        && php artisan freescout:module-install "$m"
+for FILE in ${FREESCOUT_MODULES}/* ; do
+    if [ -d "${FILE}" ] ; then
+        MODULE=$(basename -- "${FILE}")
+        bf-debug "  ${MODULE}"
+        php artisan freescout:module-install "${MODULE}"
+    fi
 done
