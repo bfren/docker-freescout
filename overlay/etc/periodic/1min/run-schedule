@@ -11,4 +11,4 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 #php ${FREESCOUT_SRC}/artisan freescout:fetch-emails >> /data/storage/logs/fetch-emails.log
-timeout 40s php ${FREESCOUT_SRC}/artisan schedule:run >> /dev/null 2>&1
+php ${FREESCOUT_SRC}/artisan schedule:run >> /dev/null 2>&1
