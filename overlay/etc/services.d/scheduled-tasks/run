@@ -10,4 +10,5 @@ export BF_E="${PWD##*/}/$(basename ${0})"
 # https://github.com/freescout-helpdesk/freescout/blob/dist/app/Console/Kernel.php
 #======================================================================================================================
 
+bf-echo "Running FreeScout task scheduler."
 php ${FREESCOUT_SRC}/artisan schedule:run >> /dev/null 2>&1
