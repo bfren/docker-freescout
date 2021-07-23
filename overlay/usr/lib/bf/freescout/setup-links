@@ -40,6 +40,6 @@ create-if-not-link "${FREESCOUT_PUBLIC_STORAGE_SRC}" "${FREESCOUT_STORAGE_APP_PU
 bf-debug "Install modules:"
 for FILE in ${FREESCOUT_MODULES}/* ; do
     if [ -d "${FILE}" ] ; then
-        create-if-not-link "${FREESCOUT_MODULES}/${MODULE}/Public" "${FREESCOUT_PUBLIC_MODULES_SRC}/${MODULE,,}"
+        create-if-not-link "${FREESCOUT_PUBLIC_MODULES_SRC}/${MODULE,,}" "${FREESCOUT_MODULES}/${MODULE}/Public"
     fi
 done
