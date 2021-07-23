@@ -45,6 +45,6 @@ for FILE in ${FREESCOUT_MODULES}/* ; do
     if [ -d "${FILE}" ] ; then
         MODULE=$(basename -- "${FILE}")
         bf-debug "  ${MODULE}"
-        php artisan freescout:module-install "${MODULE}"
+        ln -s "${FREESCOUT_PUBLIC_MODULES_SRC}/${MODULE}" "${FREESCOUT_MODULES}/${MODULE}/Public"
     fi
 done
