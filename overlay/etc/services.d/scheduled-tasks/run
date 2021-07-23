@@ -6,8 +6,7 @@ export BF_E="${PWD##*/}/$(basename ${0})"
 
 #======================================================================================================================
 # Run task scheduler as a service.
-# This is because on Alpine the scheduler doesn't fetch emails correctly.  Tasks are defined in:
-# https://github.com/freescout-helpdesk/freescout/blob/dist/app/Console/Kernel.php
+# This is because on Alpine the scheduler doesn't work correctly when run through the cron.
 #======================================================================================================================
 
 bf-echo "Running FreeScout task scheduler."
