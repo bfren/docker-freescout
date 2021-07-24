@@ -19,15 +19,11 @@ fi
 #======================================================================================================================
 
 # ensure all required environment variables are set
-[[ -z "${FREESCOUT_APP_URL-}" ]] && bf-error "FREESCOUT_APP_URL must be set."
+[[ -z "${FREESCOUT_URL-}" ]] && bf-error "FREESCOUT_URL must be set."
 [[ -z "${FREESCOUT_DB_NAME-}" ]] && bf-error "FREESCOUT_DB_NAME must be set."
 [[ -z "${FREESCOUT_DB_USER-}" ]] && bf-error "FREESCOUT_DB_USER must be set."
 [[ -z "${FREESCOUT_DB_PASS-}" ]] && bf-error "FREESCOUT_DB_PASS must be set."
 [[ -z "${FREESCOUT_DB_HOST-}" ]] && bf-error "FREESCOUT_DB_HOST must be set."
-[[ -z "${FREESCOUT_ADMIN_FIRSTNAME-}" ]] && bf-error "FREESCOUT_ADMIN_FIRSTNAME must be set."
-[[ -z "${FREESCOUT_ADMIN_LASTNAME-}" ]] && bf-error "FREESCOUT_ADMIN_LASTNAME must be set."
-[[ -z "${FREESCOUT_ADMIN_EMAIL-}" ]] && bf-error "FREESCOUT_ADMIN_EMAIL must be set."
-[[ -z "${FREESCOUT_ADMIN_PASS-}" ]] && bf-error "FREESCOUT_ADMIN_PASS must be set."
 
 # generate config from the template
 bf-debug "Generating ${FREESCOUT_ENV}."

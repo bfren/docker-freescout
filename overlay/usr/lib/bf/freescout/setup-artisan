@@ -28,6 +28,12 @@ php artisan migrate --force
 
 if [ "${FREESCOUT_INSTALLED-}" -ne "1" ] ; then
 
+    # ensure all required environment variables are set
+    [[ -z "${FREESCOUT_ADMIN_FIRSTNAME-}" ]] && bf-error "FREESCOUT_ADMIN_FIRSTNAME must be set."
+    [[ -z "${FREESCOUT_ADMIN_LASTNAME-}" ]] && bf-error "FREESCOUT_ADMIN_LASTNAME must be set."
+    [[ -z "${FREESCOUT_ADMIN_EMAIL-}" ]] && bf-error "FREESCOUT_ADMIN_EMAIL must be set."
+    [[ -z "${FREESCOUT_ADMIN_PASS-}" ]] && bf-error "FREESCOUT_ADMIN_PASS must be set."
+
     bf-debug "Create admin user."
     php artisan -n freescout:create-user \
         --role=admin \
