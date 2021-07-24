@@ -1,0 +1,32 @@
+#!/usr/bin/with-contenv bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# If an existing installation was detected, do not proceed.
+#======================================================================================================================
+
+if [ "${FREESCOUT_INSTALLED-}" = "1" ] ; then
+    bf-echo "Existing installation detected - do not regenerate .env."
+    exit 0
+fi
+
+
+#======================================================================================================================
+# Generate config from environment variables.
+#======================================================================================================================
+
+# ensure all required environment variables are set
+[[ -z "${FREESCOUT_URL-}" ]] && bf-error "FREESCOUT_URL must be set."
+[[ -z "${FREESCOUT_DB_NAME-}" ]] && bf-error "FREESCOUT_DB_NAME must be set."
+[[ -z "${FREESCOUT_DB_USER-}" ]] && bf-error "FREESCOUT_DB_USER must be set."
+[[ -z "${FREESCOUT_DB_PASS-}" ]] && bf-error "FREESCOUT_DB_PASS must be set."
+[[ -z "${FREESCOUT_DB_HOST-}" ]] && bf-error "FREESCOUT_DB_HOST must be set."
+
+# generate config from the template
+bf-debug "Generating ${FREESCOUT_ENV}."
+esh -o ${FREESCOUT_ENV} \
+    ${BF_TEMPLATES}/.env.esh
+bf-done

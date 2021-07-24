@@ -1,0 +1,40 @@
+server {
+    include                         helpers/nginx-base.conf;
+    index                           index.php index.html index.htm;
+
+    location / {
+        try_files                   $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_split_path_info     ^(.+\.php)(/.+)$;
+        fastcgi_pass                php;
+        fastcgi_index               index.php;
+        fastcgi_param               SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include                     fastcgi_params;
+    }
+
+    location ~* ^/storage/attachment/ {
+        expires                     1M;
+        access_log                  off;
+        try_files                   $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~* ^/(?:css|js)/.*\.(?:css|js)$ {
+        expires                     2d;
+        access_log                  off;
+        add_header                  Cache-Control "public, must-revalidate";
+    }
+
+    location ~* ^/(?:css|fonts|img|installer|js|modules|[^\\\]+\..*)$ {
+        expires                     1M;
+        access_log                  off;
+        add_header                  Cache-Control "public";
+    }
+
+    location ~ /\. {
+        deny                        all;
+    }
+
+    include                         helpers/nginx-uploads.conf;
+}

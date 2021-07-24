@@ -1,0 +1,65 @@
+#!/usr/bin/with-contenv bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Delete a file or directory if it is not a link.
+#
+# Arguments
+#   1   File / directory path
+#======================================================================================================================
+
+delete-if-not-link () {
+
+    CHECK_PATH=${1}
+
+    if [ ! -L ${CHECK_PATH} ] ; then
+
+        bf-echo "Deleting ${CHECK_PATH} so it can be turned into a symlink."
+        rm -rf ${CHECK_PATH}
+        bf-done
+
+    fi
+
+}
+
+
+#======================================================================================================================
+# If /freescout already has content in it, delete source content so it can be linked to /freescout content...
+#======================================================================================================================
+
+if [ "$(ls -A ${FREESCOUT})" ] ; then
+
+    bf-debug "${FREESCOUT} is not empty."
+
+    delete-if-not-link "${FREESCOUT_ENV_SRC}"
+    delete-if-not-link "${FREESCOUT_MODULES_SRC}"
+    delete-if-not-link "${FREESCOUT_STORAGE_SRC}"
+
+    bf-env "FREESCOUT_INSTALLED" "1"
+
+
+#======================================================================================================================
+# ...otherwise, move all files and directories in source storage to /freescout/storage.
+#======================================================================================================================
+
+else
+
+    bf-echo "Moving ${FREESCOUT_MODULES_SRC} files and directories..."
+    mv ${FREESCOUT_MODULES_SRC} ${FREESCOUT}
+    bf-done
+
+    bf-echo "Moving ${FREESCOUT_STORAGE_SRC} files and directories..."
+    mv ${FREESCOUT_STORAGE_SRC} ${FREESCOUT}
+    bf-done
+
+fi
+
+
+#======================================================================================================================
+# Set permissions on files.
+#======================================================================================================================
+
+freescout-set-permissions

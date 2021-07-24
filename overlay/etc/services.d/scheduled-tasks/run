@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+
+set -euo pipefail
+export BF_E="${PWD##*/}/$(basename ${0})"
+
+
+#======================================================================================================================
+# Run task scheduler as a service.
+# This is because on Alpine the scheduler doesn't work correctly when run through the cron.
+#======================================================================================================================
+
+bf-echo "Running FreeScout task scheduler."
+php ${FREESCOUT_SRC}/artisan schedule:run >> /dev/null 2>&1

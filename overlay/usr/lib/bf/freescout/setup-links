@@ -1,0 +1,45 @@
+#!/usr/bin/with-contenv bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Create a link if it does not already exist.
+#
+# Arguments
+#   1   From file / directory path
+#   2   To file / directory path
+#======================================================================================================================
+
+create-if-not-link() {
+
+    PATH_LINK=${1}
+    PATH_TARGET=${2}
+
+    if [ ! -L ${PATH_LINK} ] ; then
+
+        bf-echo "Linking ${PATH_LINK} to ${PATH_TARGET}..."
+        ln -s ${PATH_TARGET} ${PATH_LINK}
+        bf-done
+
+    fi
+
+}
+
+
+#======================================================================================================================
+# Link source content to /data.
+#======================================================================================================================
+
+create-if-not-link "${FREESCOUT_ENV_SRC}" "${FREESCOUT_ENV}"
+create-if-not-link "${FREESCOUT_MODULES_SRC}" "${FREESCOUT_MODULES}"
+create-if-not-link "${FREESCOUT_STORAGE_SRC}" "${FREESCOUT_STORAGE}"
+create-if-not-link "${FREESCOUT_PUBLIC_STORAGE_SRC}" "${FREESCOUT_STORAGE_APP_PUBLIC}"
+
+for FILE in ${FREESCOUT_MODULES}/* ; do
+    if [ -d "${FILE}" ] ; then
+        MODULE=$(basename -- "${FILE}")
+        create-if-not-link "${FREESCOUT_PUBLIC_MODULES_SRC}/${MODULE,,}" "${FREESCOUT_MODULES}/${MODULE}/Public"
+    fi
+done

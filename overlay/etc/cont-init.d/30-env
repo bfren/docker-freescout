@@ -1,0 +1,24 @@
+#!/usr/bin/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Add environment variables.
+#======================================================================================================================
+
+bf-env "FREESCOUT_LIB" "${BF_LIB}/freescout"
+
+FREESCOUT="/data"
+bf-env "FREESCOUT" "${FREESCOUT}"
+bf-env "FREESCOUT_ENV" "${FREESCOUT}/.env"
+bf-env "FREESCOUT_MODULES" "${FREESCOUT}/Modules"
+bf-env "FREESCOUT_STORAGE" "${FREESCOUT}/storage"
+bf-env "FREESCOUT_STORAGE_APP_PUBLIC" "${FREESCOUT}/storage/app/public"
+
+bf-env "FREESCOUT_ENV_SRC" "${FREESCOUT_SRC}/.env"
+bf-env "FREESCOUT_MODULES_SRC" "${FREESCOUT_SRC}/Modules"
+bf-env "FREESCOUT_PUBLIC_MODULES_SRC" "${FREESCOUT_SRC}/public/modules"
+bf-env "FREESCOUT_PUBLIC_STORAGE_SRC" "${FREESCOUT_SRC}/public/storage"
+bf-env "FREESCOUT_STORAGE_SRC" "${FREESCOUT_SRC}/storage"

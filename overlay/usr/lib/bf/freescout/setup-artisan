@@ -1,0 +1,47 @@
+#!/usr/bin/with-contenv bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Run artisan setup routines, skipping key and user creation if app has already been set up.
+#======================================================================================================================
+
+cd ${FREESCOUT_SRC}
+
+if [ "${FREESCOUT_INSTALLED-}" -ne "1" ] ; then
+    bf-debug "Generate key."
+    php artisan key:generate
+fi
+
+bf-debug "Clear cache."
+php artisan freescout:clear-cache
+
+bf-debug "Clear config."
+php artisan config:clear
+
+# we don't use artisan storage:link because we've moved the storage location
+
+bf-debug "Migrate database."
+php artisan migrate --force
+
+if [ "${FREESCOUT_INSTALLED-}" -ne "1" ] ; then
+
+    # ensure all required environment variables are set
+    [[ -z "${FREESCOUT_ADMIN_FIRSTNAME-}" ]] && bf-error "FREESCOUT_ADMIN_FIRSTNAME must be set."
+    [[ -z "${FREESCOUT_ADMIN_LASTNAME-}" ]] && bf-error "FREESCOUT_ADMIN_LASTNAME must be set."
+    [[ -z "${FREESCOUT_ADMIN_EMAIL-}" ]] && bf-error "FREESCOUT_ADMIN_EMAIL must be set."
+    [[ -z "${FREESCOUT_ADMIN_PASS-}" ]] && bf-error "FREESCOUT_ADMIN_PASS must be set."
+
+    bf-debug "Create admin user."
+    php artisan -n freescout:create-user \
+        --role=admin \
+        --firstName="${FREESCOUT_ADMIN_FIRSTNAME}" \
+        --lastName="${FREESCOUT_ADMIN_LASTNAME}" \
+        --email="${FREESCOUT_ADMIN_EMAIL}" \
+        --password="${FREESCOUT_ADMIN_PASS}"
+
+    bf-done
+
+fi

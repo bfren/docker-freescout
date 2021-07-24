@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Fetch emails manually.
+# This is because on Alpine the scheduler doesn't fetch emails correctly.
+#======================================================================================================================
+
+php ${FREESCOUT_SRC}/artisan freescout:fetch-emails >> /data/storage/logs/fetch-emails.log

@@ -1,0 +1,87 @@
+#!/bin/sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Get PHP version.
+#======================================================================================================================
+
+cd /tmp
+
+PHP_VERSION=$(cat PHP_VERSION)
+bf-debug "PHP version ${PHP_VERSION}."
+
+
+#======================================================================================================================
+# Install PHP dependencies.
+#======================================================================================================================
+
+bf-echo "Installing installation dependencies..."
+apk add --no-cache --virtual .install \
+    git
+bf-done
+
+bf-echo "Installing required PHP modules for v${PHP_VERSION}..."
+apk add --no-cache \
+    php7=${PHP_VERSION} \
+    php7-curl=${PHP_VERSION} \
+    php7-dom=${PHP_VERSION} \
+    php7-fileinfo=${PHP_VERSION} \
+    php7-gd=${PHP_VERSION} \
+    php7-imap=${PHP_VERSION} \
+    php7-json=${PHP_VERSION} \
+    php7-ldap=${PHP_VERSION} \
+    php7-mbstring=${PHP_VERSION} \
+    php7-mysqli=${PHP_VERSION} \
+    php7-pdo_mysql=${PHP_VERSION} \
+    php7-tokenizer=${PHP_VERSION} \
+    php7-xml=${PHP_VERSION} \
+    php7-zip=${PHP_VERSION}
+bf-done
+
+
+#======================================================================================================================
+# Get FreeScout environment variables.
+#======================================================================================================================
+
+SRC=/etc/bf/src
+bf-debug "Source directory: ${SRC}."
+
+FREESCOUT=freescout
+FREESCOUT_SRC=${SRC}/${FREESCOUT}
+bf-debug "FreeScout source directory: ${FREESCOUT_SRC}."
+
+FREESCOUT_VERSION=$(cat FREESCOUT_VERSION)
+bf-debug "FreeScout version ${FREESCOUT_VERSION}."
+
+
+#======================================================================================================================
+# Download and install FreeScout.
+#======================================================================================================================
+
+bf-echo "Cloning FreeScout v${FREESCOUT_VERSION} into ${FREESCOUT_SRC}"
+git clone --depth 1 --branch ${FREESCOUT_VERSION} https://github.com/freescout-helpdesk/freescout ${FREESCOUT_SRC}
+bf-done
+
+
+#======================================================================================================================
+# Set permissions on source files.
+#======================================================================================================================
+
+bf-echo "Setting permissions on ${FREESCOUT_SRC}..."
+bf-ch -o www:www -m 0755 -t d ${FREESCOUT_SRC}
+bf-ch -o www:www -m 0644 -t f ${FREESCOUT_SRC}
+bf-done
+
+
+#======================================================================================================================
+# Cleanup.
+#======================================================================================================================
+
+bf-debug "Removing /www files."
+rm -f /www/*
+
+bf-debug "Removing installation dependencies."
+apk del .install
