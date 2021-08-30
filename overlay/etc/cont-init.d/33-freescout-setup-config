@@ -5,7 +5,7 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# If FREESCOUT_STORAGE_SRC doesn't exist, the content setup has not worked correctly.
+# If FREESCOUT_STORAGE doesn't exist, the content setup has not worked correctly.
 #======================================================================================================================
 
 [[ ! -d ${FREESCOUT_STORAGE} ]] && bf-error "${FREESCOUT_STORAGE} does not exist."
