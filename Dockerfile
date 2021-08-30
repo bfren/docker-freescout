@@ -10,16 +10,7 @@ ENV \
     # admin user's email address
     FREESCOUT_ADMIN_EMAIL= \
     # admin user's password
-    FREESCOUT_ADMIN_PASS= \
-    # database name
-    WP_DB_NAME= \
-    # database user
-    WP_DB_USER= \
-    # database password
-    WP_DB_PASS= \
-    # database host
-    WP_DB_HOST= \
-    WP_DEBUG=0
+    FREESCOUT_ADMIN_PASS=
 
 COPY ./overlay /
 COPY ./FREESCOUT_REVISION /tmp/FREESCOUT_VERSION
