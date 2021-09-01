@@ -45,8 +45,8 @@ See the [Nginx + PHP](https://github.com/bfren/docker-nginx-php) image for detai
 
 ## Licence
 
-> [MIT](https://mit.bfren.uk/2021)
+> [MIT](https://mit.bfren.dev/2021)
 
 ## Copyright
 
-> Copyright (c) 2021 bfren.uk
+> Copyright (c) 2021 bfren
