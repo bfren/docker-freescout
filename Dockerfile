@@ -1,4 +1,4 @@
-FROM bfren/nginx-php:php7.4-2.2.14
+FROM bfren/nginx-php:php7.4-2.2.15
 
 ENV \
     # set to the application's external URL
