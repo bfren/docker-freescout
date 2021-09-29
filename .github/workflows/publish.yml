@@ -14,27 +14,27 @@ jobs:
         uses: actions/checkout@v2
       -
         name: Read FreeScout version - major
-        uses: bfren/read-file-action@v1
+        uses: bfren/read-file@v1
         with:
           path: ./FREESCOUT_MAJOR
         id: freescout_major
       -
         name: Read FreeScout version - minor
-        uses: bfren/read-file-action@v1
+        uses: bfren/read-file@v1
         with:
           path: ./FREESCOUT_MINOR
         id: freescout_minor
       -
         name: Read FreeScout version - revision
-        uses: bfren/read-file-action@v1
+        uses: bfren/read-file@v1
         with:
           path: ./FREESCOUT_REVISION
         id: freescout_revision
       -
         name: Read image version
-        uses: bfren/read-file-action@v1
+        uses: bfren/read-file@v1
         with:
-          path: ./VERSION
+          file: ./VERSION
         id: version
       -
         name: Set up QEMU
@@ -57,12 +57,12 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bfren/freescout:latest
-            bfren/freescout:${{ steps.version.outputs.content }}
-            bfren/freescout:freescout${{ steps.freescout_major.outputs.content }}
-            bfren/freescout:freescout${{ steps.freescout_major.outputs.content }}-${{ steps.version.outputs.content }}
-            bfren/freescout:freescout${{ steps.freescout_minor.outputs.content }}
-            bfren/freescout:freescout${{ steps.freescout_minor.outputs.content }}-${{ steps.version.outputs.content }}
-            bfren/freescout:freescout${{ steps.freescout_revision.outputs.content }}
+            bfren/freescout:${{ steps.version.outputs.contents }}
+            bfren/freescout:freescout${{ steps.freescout_major.outputs.contents }}
+            bfren/freescout:freescout${{ steps.freescout_major.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}
+            bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/freescout:freescout${{ steps.freescout_revision.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
