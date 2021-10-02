@@ -10,7 +10,7 @@ export BF_E=`basename ${0}`
 
 cd ${FREESCOUT_SRC}
 
-if [ "${FREESCOUT_INSTALLED-}" -ne "1" ] ; then
+if [ "${FREESCOUT_INSTALLED-}" != "1" ] ; then
     bf-debug "Generate key."
     php artisan key:generate
 fi
@@ -26,7 +26,7 @@ php artisan config:clear
 bf-debug "Migrate database."
 php artisan migrate --force
 
-if [ "${FREESCOUT_INSTALLED-}" -ne "1" ] ; then
+if [ "${FREESCOUT_INSTALLED-}" != "1" ] ; then
 
     # ensure all required environment variables are set
     [[ -z "${FREESCOUT_ADMIN_FIRSTNAME-}" ]] && bf-error "FREESCOUT_ADMIN_FIRSTNAME must be set."
