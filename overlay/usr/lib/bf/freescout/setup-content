@@ -27,7 +27,7 @@ delete-if-not-link () {
 
 
 #======================================================================================================================
-# If /freescout already has content in it, delete source content so it can be linked to /freescout content...
+# If /data already has content in it, delete source content so it can be linked to /freescout content...
 #======================================================================================================================
 
 if [ "$(ls -A ${FREESCOUT})" ] ; then
