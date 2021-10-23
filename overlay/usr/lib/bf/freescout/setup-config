@@ -27,6 +27,5 @@ fi
 
 # generate config from the template
 bf-debug "Generating ${FREESCOUT_ENV}."
-esh -o ${FREESCOUT_ENV} \
-    ${BF_TEMPLATES}/.env.esh
+bf-esh ${BF_TEMPLATES}/.env.esh ${FREESCOUT_ENV}
 bf-done
