@@ -25,20 +25,20 @@ bf-done
 
 bf-echo "Installing required PHP modules for v${PHP_VERSION}..."
 apk add --no-cache \
-    php7=${PHP_VERSION} \
-    php7-curl=${PHP_VERSION} \
-    php7-dom=${PHP_VERSION} \
-    php7-fileinfo=${PHP_VERSION} \
-    php7-gd=${PHP_VERSION} \
-    php7-imap=${PHP_VERSION} \
-    php7-json=${PHP_VERSION} \
-    php7-ldap=${PHP_VERSION} \
-    php7-mbstring=${PHP_VERSION} \
-    php7-mysqli=${PHP_VERSION} \
-    php7-pdo_mysql=${PHP_VERSION} \
-    php7-tokenizer=${PHP_VERSION} \
-    php7-xml=${PHP_VERSION} \
-    php7-zip=${PHP_VERSION}
+    php8=${PHP_VERSION} \
+    php8-curl=${PHP_VERSION} \
+    php8-dom=${PHP_VERSION} \
+    php8-fileinfo=${PHP_VERSION} \
+    php8-gd=${PHP_VERSION} \
+    php8-imap=${PHP_VERSION} \
+    php8-json=${PHP_VERSION} \
+    php8-ldap=${PHP_VERSION} \
+    php8-mbstring=${PHP_VERSION} \
+    php8-mysqli=${PHP_VERSION} \
+    php8-pdo_mysql=${PHP_VERSION} \
+    php8-tokenizer=${PHP_VERSION} \
+    php8-xml=${PHP_VERSION} \
+    php8-zip=${PHP_VERSION}
 bf-done
 
 
