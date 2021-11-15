@@ -16,15 +16,12 @@ fi
 
 
 #======================================================================================================================
-# If we weren't taking over an existing installation, delete .env file to be regenerated next time.
+# If we get here, the installation did not complete successfully so remove setup and terminate.
 #======================================================================================================================
 
+# if we weren't taking over an existing installation, delete .env file to be regenerated next time
 [[ "${FREESCOUT_INSTALLED-}" != "1" ]] && rm "${FREESCOUT_ENV}"
 
-
-#======================================================================================================================
-# Terminate the container.
-#======================================================================================================================
-
+# terminate the container
 bf-notok "FreeScout setup did not complete successfully, terminating container."
 bf-svc-terminate
