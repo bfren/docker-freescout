@@ -8,6 +8,8 @@ export BF_E=`basename ${0}`
 # Run artisan setup routines, skipping key and user creation if app has already been set up.
 #======================================================================================================================
 
+bf-echo "Run artisan setup."
+
 cd ${FREESCOUT_SRC}
 
 if [ "${FREESCOUT_INSTALLED-}" != "1" ] ; then
@@ -42,6 +44,6 @@ if [ "${FREESCOUT_INSTALLED-}" != "1" ] ; then
         --email="${FREESCOUT_ADMIN_EMAIL}" \
         --password="${FREESCOUT_ADMIN_PASS}"
 
-    bf-done
-
 fi
+
+bf-done
