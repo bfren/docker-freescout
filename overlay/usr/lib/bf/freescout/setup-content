@@ -15,7 +15,7 @@ delete-if-not-link () {
 
     CHECK_PATH=${1}
 
-    if [ ! -L ${CHECK_PATH} ] ; then
+    if [ ! -L "${CHECK_PATH}" ] ; then
 
         bf-echo "Deleting ${CHECK_PATH} so it can be turned into a symlink."
         rm -rf ${CHECK_PATH}
@@ -30,9 +30,9 @@ delete-if-not-link () {
 # If /data already has content in it, delete source content so it can be linked to /freescout content...
 #======================================================================================================================
 
-if [ "$(ls -A ${FREESCOUT})" ] ; then
+if [ -f "${FREESCOUT_ENV}" ] ; then
 
-    bf-debug "${FREESCOUT} is not empty."
+    bf-debug "Taking over an existing installation."
 
     delete-if-not-link "${FREESCOUT_ENV_SRC}"
     delete-if-not-link "${FREESCOUT_MODULES_SRC}"
