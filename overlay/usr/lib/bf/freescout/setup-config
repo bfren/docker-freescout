@@ -8,7 +8,7 @@ export BF_E=`basename ${0}`
 # If an existing installation was detected, do not proceed.
 #======================================================================================================================
 
-if [ "${FREESCOUT_INSTALLED-}" != "1" ] ; then
+if [ "${FREESCOUT_INSTALLED-}" == "1" ] ; then
     bf-echo "Existing installation detected - do not regenerate .env."
     exit 0
 fi
