@@ -15,4 +15,5 @@ if [ "${SETUP_COMPLETE-}" = "1" ] ; then
 fi
 
 bf-notok "FreeScout setup did not complete successfully, terminating container."
+bf-rmrf "${FREESCOUT_ENV}"
 bf-svc-terminate
