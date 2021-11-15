@@ -27,6 +27,28 @@ delete-if-not-link () {
 
 
 #======================================================================================================================
+# Move a file or directory if it is not a link.
+#
+# Arguments
+#   1   File / directory path
+#======================================================================================================================
+
+move-if-not-link () {
+
+    CHECK_PATH=${1}
+
+    if [ ! -L "${CHECK_PATH}" ] ; then
+
+        bf-echo "Moving ${CHECK_PATH} so it can be turned into a symlink."
+        mv ${CHECK_PATH} ${FREESCOUT}
+        bf-done
+
+    fi
+
+}
+
+
+#======================================================================================================================
 # If .env already exists, delete source content so it can be linked to /data content...
 #======================================================================================================================
 
@@ -42,17 +64,14 @@ if [ -f "${FREESCOUT_ENV}" ] ; then
 
 
 #======================================================================================================================
-# ...otherwise, move all files and directories in source storage to /freescout/storage.
+# ...otherwise, move source content to /data.
 #======================================================================================================================
 
 else
 
-    bf-echo "Moving ${FREESCOUT_MODULES_SRC} files and directories..."
-    mv ${FREESCOUT_MODULES_SRC} ${FREESCOUT}
-    bf-done
+    bf-debug "New installation - move source directories to ${FREESCOUT}."
 
-    bf-echo "Moving ${FREESCOUT_STORAGE_SRC} files and directories..."
-    mv ${FREESCOUT_STORAGE_SRC} ${FREESCOUT}
-    bf-done
+    move-if-not-link ${FREESCOUT_MODULES_SRC}
+    move-if-not-link ${FREESCOUT_STORAGE_SRC}
 
 fi
