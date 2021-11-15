@@ -30,18 +30,21 @@ See the [Nginx](https://github.com/bfren/docker-nginx) image for other configura
 
 See the [Nginx + PHP](https://github.com/bfren/docker-nginx-php) image for details of `www.conf` and `php.ini` overrides using environment variables.
 
-| Variable                    | Values | Description                          | Default                                                       |
-| --------------------------- | ------ | ------------------------------------ | ------------------------------------------------------------- |
-| `FREESCOUT_URL`             | string | Application URL.                     | *None* - required unless taking over a previous installation. |
-| `FREESCOUT_ADMIN_FIRSTNAME` | string | Admin user first name.               | *None* - required unless taking over a previous installation. |
-| `FREESCOUT_ADMIN_LASTNAME`  | string | Admin user last name.                | *None* - required unless taking over a previous installation. |
-| `FREESCOUT_ADMIN_EMAIL`     | string | Admin user email address.            | *None* - required unless taking over a previous installation. |
-| `FREESCOUT_ADMIN_PASS`      | string | Admin user password.                 | *None* - required unless taking over a previous installation. |
-| `FREESCOUT_DB_NAME`         | string | Database name.                       | *None* - required unless taking over a previous installation. |
-| `FREESCOUT_DB_USER`         | string | Database username.                   | *None* - required unless taking over a previous installation. |
-| `FREESCOUT_DB_PASS`         | string | Database password.                   | *None* - required unless taking over a previous installation. |
-| `FREESCOUT_DB_HOST`         | string | Database host.                       | *None* - required unless taking over a previous installation. |
-| `FREESCOUT_DEBUG`           | 0 or 1 | Whether or not to enable debug mode. | 0                                                             |
+| Variable                    | Values        | Description                          | Default                                                       |
+| --------------------------- | ------------- | ------------------------------------ | ------------------------------------------------------------- |
+| `FREESCOUT_URL`             | string        | Application URL.                     | *None* - required unless taking over a previous installation. |
+| `FREESCOUT_ADMIN_FIRSTNAME` | string        | Admin user first name.               | *None* - required unless taking over a previous installation. |
+| `FREESCOUT_ADMIN_LASTNAME`  | string        | Admin user last name.                | *None* - required unless taking over a previous installation. |
+| `FREESCOUT_ADMIN_EMAIL`     | string        | Admin user email address.            | *None* - required unless taking over a previous installation. |
+| `FREESCOUT_ADMIN_PASS`      | string        | Admin user password.                 | *None* - required unless taking over a previous installation. |
+| `FREESCOUT_DB_CONN`         | mysql / pgsql | Database connection type.            | mysql                                                         |
+| `FREESCOUT_DB_PORT`         | string        | Database name.                       | 3306                                                          |
+| `FREESCOUT_DB_NAME`         | string        | Database name.                       | *None* - required unless taking over a previous installation. |
+| `FREESCOUT_DB_USER`         | string        | Database username.                   | *None* - required unless taking over a previous installation. |
+| `FREESCOUT_DB_PASS`         | string        | Database password.                   | *None* - required unless taking over a previous installation. |
+| `FREESCOUT_DB_HOST`         | string        | Database host.                       | *None* - required unless taking over a previous installation. |
+| `FREESCOUT_DEBUG`           | 0 or 1        | Whether or not to enable debug mode. | 0                                                             |
+| `FREESCOUT_HTTPS`           | true or false | Whether or not to force HTTPS.       | true - set to false if not hosting behind a reverse proxy     |
 
 ## Licence
 

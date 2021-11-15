@@ -14,45 +14,58 @@ export BF_E=`basename ${0}`
 delete-if-not-link () {
 
     CHECK_PATH=${1}
-
-    if [ ! -L ${CHECK_PATH} ] ; then
-
-        bf-echo "Deleting ${CHECK_PATH} so it can be turned into a symlink."
+    if [ ! -L "${CHECK_PATH}" ] ; then
+        bf-debug " .. deleting ${CHECK_PATH} so it can be turned into a symlink."
         rm -rf ${CHECK_PATH}
-        bf-done
-
     fi
 
 }
 
 
 #======================================================================================================================
-# If /data already has content in it, delete source content so it can be linked to /freescout content...
+# Move a file or directory if it is not a link.
+#
+# Arguments
+#   1   File / directory path
 #======================================================================================================================
 
-if [ "$(ls -A ${FREESCOUT})" ] ; then
+move-if-not-link () {
 
-    bf-debug "${FREESCOUT} is not empty."
+    CHECK_PATH=${1}
+    if [ ! -L "${CHECK_PATH}" ] ; then
+        bf-debug " .. moving ${CHECK_PATH}"
+        mv ${CHECK_PATH} ${FREESCOUT}
+    fi
+
+}
+
+
+#======================================================================================================================
+# If .env already exists, delete source content so it can be linked to /data content...
+#======================================================================================================================
+
+if [ -f "${FREESCOUT_ENV}" ] ; then
+
+    bf-echo "Taking over an existing installation - remove source directories to create links."
 
     delete-if-not-link "${FREESCOUT_ENV_SRC}"
     delete-if-not-link "${FREESCOUT_MODULES_SRC}"
     delete-if-not-link "${FREESCOUT_STORAGE_SRC}"
+    bf-done
 
-    bf-env "FREESCOUT_INSTALLED" "1"
+    bf-env "FREESCOUT_EXISTING_INSTALLATION" "1"
 
 
 #======================================================================================================================
-# ...otherwise, move all files and directories in source storage to /freescout/storage.
+# ...otherwise, move source content to /data.
 #======================================================================================================================
 
 else
 
-    bf-echo "Moving ${FREESCOUT_MODULES_SRC} files and directories..."
-    mv ${FREESCOUT_MODULES_SRC} ${FREESCOUT}
-    bf-done
+    bf-echo "New installation - move source directories to ${FREESCOUT}."
 
-    bf-echo "Moving ${FREESCOUT_STORAGE_SRC} files and directories..."
-    mv ${FREESCOUT_STORAGE_SRC} ${FREESCOUT}
+    move-if-not-link ${FREESCOUT_MODULES_SRC}
+    move-if-not-link ${FREESCOUT_STORAGE_SRC}
     bf-done
 
 fi
