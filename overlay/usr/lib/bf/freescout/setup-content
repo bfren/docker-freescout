@@ -27,12 +27,12 @@ delete-if-not-link () {
 
 
 #======================================================================================================================
-# If /data already has content in it, delete source content so it can be linked to /freescout content...
+# If .env already exists, delete source content so it can be linked to /data content...
 #======================================================================================================================
 
 if [ -f "${FREESCOUT_ENV}" ] ; then
 
-    bf-debug "Taking over an existing installation."
+    bf-debug "Taking over an existing installation - remove source directories to create links."
 
     delete-if-not-link "${FREESCOUT_ENV_SRC}"
     delete-if-not-link "${FREESCOUT_MODULES_SRC}"
