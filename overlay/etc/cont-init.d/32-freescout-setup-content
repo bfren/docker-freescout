@@ -15,4 +15,7 @@ export BF_E=`basename ${0}`
 # Run setup content executable.
 #======================================================================================================================
 
+    ls -al ${FREESCOUT_SRC}
+    ls -al ${FREESCOUT_MODULES_SRC}
+
 ${FREESCOUT_LIB}/setup-content
