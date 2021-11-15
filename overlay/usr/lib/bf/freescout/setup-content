@@ -53,7 +53,7 @@ if [ -f "${FREESCOUT_ENV}" ] ; then
     delete-if-not-link "${FREESCOUT_STORAGE_SRC}"
     bf-done
 
-    bf-env "FREESCOUT_INSTALLED" "1"
+    bf-env "FREESCOUT_EXISTING_INSTALLATION" "1"
 
 
 #======================================================================================================================
