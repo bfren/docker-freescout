@@ -14,13 +14,9 @@ export BF_E=`basename ${0}`
 delete-if-not-link () {
 
     CHECK_PATH=${1}
-
     if [ ! -L "${CHECK_PATH}" ] ; then
-
-        bf-echo "Deleting ${CHECK_PATH} so it can be turned into a symlink."
+        bf-debug " .. deleting ${CHECK_PATH} so it can be turned into a symlink."
         rm -rf ${CHECK_PATH}
-        bf-done
-
     fi
 
 }
@@ -36,13 +32,9 @@ delete-if-not-link () {
 move-if-not-link () {
 
     CHECK_PATH=${1}
-
     if [ ! -L "${CHECK_PATH}" ] ; then
-
-        bf-echo "Moving ${CHECK_PATH} so it can be turned into a symlink."
+        bf-debug " .. moving ${CHECK_PATH}"
         mv ${CHECK_PATH} ${FREESCOUT}
-        bf-done
-
     fi
 
 }
@@ -54,11 +46,12 @@ move-if-not-link () {
 
 if [ -f "${FREESCOUT_ENV}" ] ; then
 
-    bf-debug "Taking over an existing installation - remove source directories to create links."
+    bf-echo "Taking over an existing installation - remove source directories to create links."
 
     delete-if-not-link "${FREESCOUT_ENV_SRC}"
     delete-if-not-link "${FREESCOUT_MODULES_SRC}"
     delete-if-not-link "${FREESCOUT_STORAGE_SRC}"
+    bf-done
 
     bf-env "FREESCOUT_INSTALLED" "1"
 
@@ -69,9 +62,10 @@ if [ -f "${FREESCOUT_ENV}" ] ; then
 
 else
 
-    bf-debug "New installation - move source directories to ${FREESCOUT}."
+    bf-echo "New installation - move source directories to ${FREESCOUT}."
 
     move-if-not-link ${FREESCOUT_MODULES_SRC}
     move-if-not-link ${FREESCOUT_STORAGE_SRC}
+    bf-done
 
 fi
