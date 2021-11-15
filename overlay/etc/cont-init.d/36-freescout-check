@@ -19,7 +19,7 @@ fi
 # If we weren't taking over an existing installation, delete .env file to be regenerated next time.
 #======================================================================================================================
 
-[[ "${FREESCOUT_INSTALLED-}" != "1" ]] && bf-rmrf "${FREESCOUT_ENV}"
+[[ "${FREESCOUT_INSTALLED-}" != "1" ]] && rm "${FREESCOUT_ENV}"
 
 
 #======================================================================================================================
