@@ -31,11 +31,12 @@ apk add --no-cache \
     php8-fileinfo=${PHP_VERSION} \
     php8-gd=${PHP_VERSION} \
     php8-imap=${PHP_VERSION} \
-    php8-json=${PHP_VERSION} \
     php8-ldap=${PHP_VERSION} \
     php8-mbstring=${PHP_VERSION} \
     php8-mysqli=${PHP_VERSION} \
     php8-pdo_mysql=${PHP_VERSION} \
+    php8-pgsql=${PHP_VERSION} \
+    php8-pdo_pgsql=${PHP_VERSION} \
     php8-tokenizer=${PHP_VERSION} \
     php8-xml=${PHP_VERSION} \
     php8-zip=${PHP_VERSION}
