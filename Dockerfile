@@ -1,4 +1,7 @@
-FROM bfren/nginx-php:php7.4-3.1.0
+FROM bfren/nginx-php:php7.4-3.2.0
+
+ARG BF_IMAGE
+ARG BF_VERSION
 
 ENV \
     # set to the application's external URL
