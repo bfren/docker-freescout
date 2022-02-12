@@ -10,8 +10,8 @@ export BF_E=`basename ${0}`
 
 cd /tmp
 
-PHP_VERSION=$(cat PHP_VERSION)
-bf-debug "PHP version ${PHP_VERSION}."
+PHP_VERSION=$(cat PHP_BUILD)
+bf-echo "PHP version ${PHP_VERSION}."
 
 
 #======================================================================================================================
@@ -47,14 +47,14 @@ bf-done
 #======================================================================================================================
 
 SRC=/etc/bf/src
-bf-debug "Source directory: ${SRC}."
+bf-echo "Source directory: ${SRC}."
 
 FREESCOUT=freescout
 FREESCOUT_SRC=${SRC}/${FREESCOUT}
-bf-debug "FreeScout source directory: ${FREESCOUT_SRC}."
+bf-echo "FreeScout source directory: ${FREESCOUT_SRC}."
 
-FREESCOUT_VERSION=$(cat FREESCOUT_VERSION)
-bf-debug "FreeScout version ${FREESCOUT_VERSION}."
+FREESCOUT_VERSION=$(cat FREESCOUT_REVISION)
+bf-echo "FreeScout version ${FREESCOUT_VERSION}."
 
 
 #======================================================================================================================
@@ -80,8 +80,8 @@ bf-done
 # Cleanup.
 #======================================================================================================================
 
-bf-debug "Removing /www files."
+bf-echo "Removing /www files."
 rm -f /www/*
 
-bf-debug "Removing installation dependencies."
+bf-echo "Removing installation dependencies."
 apk del .install
