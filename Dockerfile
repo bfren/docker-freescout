@@ -1,4 +1,4 @@
-FROM bfren/nginx-php:php7.4-3.3.4
+FROM bfren/nginx-php:php7.4-4.0.0
 
 ARG BF_IMAGE
 ARG BF_VERSION
@@ -20,10 +20,8 @@ ENV \
     FREESCOUT_DB_PORT=3306
 
 COPY ./overlay /
-COPY ./FREESCOUT_REVISION /tmp/FREESCOUT_VERSION
-COPY ./PHP_BUILD /tmp/PHP_VERSION
-
-COPY ./overlay /
+COPY ./FREESCOUT_REVISION /tmp/
+COPY ./PHP_BUILD /tmp/
 
 RUN bf-install
 
