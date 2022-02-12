@@ -1,18 +1,19 @@
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv bash
 
 set -euo pipefail
 export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# If FREESCOUT_STORAGE doesn't exist, the content setup has not worked correctly.
+# If FREESCOUT_ENV_SRC doesn't exist, the setup has gone wrong.
 #======================================================================================================================
 
-[[ ! -d ${FREESCOUT_STORAGE} ]] && bf-error "${FREESCOUT_STORAGE} does not exist."
+[[ ! -L ${FREESCOUT_ENV_SRC} ]] && bf-error "${FREESCOUT_ENV_SRC} is not linked correctly."
 
 
 #======================================================================================================================
-# Run setup config executable.
+# Run setup artisan executable.
 #======================================================================================================================
 
-${FREESCOUT_LIB}/setup-config
+${FREESCOUT_LIB}/setup-artisan
+freescout-setup-complete
