@@ -1,14 +1,13 @@
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv sh
 
 set -euo pipefail
 export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Set permissions on files.
+# Add environment variables.
 #======================================================================================================================
 
-bf-echo "Setting permissions on ${FREESCOUT}..."
-bf-ch -o www:www -m 0755 -t d ${FREESCOUT}
-bf-ch -o www:www -m 0644 -t f ${FREESCOUT}
-bf-done
+FREESCOUT_SRC=${BF_SRC}/freescout
+bf-env "FREESCOUT_SRC" "${FREESCOUT_SRC}"
+bf-env "NGINX_ROOT" "${FREESCOUT_SRC}/public"

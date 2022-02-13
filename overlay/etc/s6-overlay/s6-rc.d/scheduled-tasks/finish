@@ -1,13 +1,11 @@
-#!/usr/bin/with-contenv sh
+#!/command/with-contenv sh
 
 set -euo pipefail
-export BF_E=`basename ${0}`
+export BF_E="${PWD##*/}/$(basename ${0})"
 
 
 #======================================================================================================================
-# Add environment variables.
+# Do nothing - service will restart.
 #======================================================================================================================
 
-FREESCOUT_SRC=${BF_SRC}/freescout
-bf-env "FREESCOUT_SRC" "${FREESCOUT_SRC}"
-bf-env "NGINX_ROOT" "${FREESCOUT_SRC}/public"
+bf-svc-finish

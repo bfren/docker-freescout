@@ -1,19 +1,14 @@
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv bash
 
 set -euo pipefail
 export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Override configuration.
+# Set permissions on files.
 #======================================================================================================================
 
-bf-echo "Overriding php.ini configuration values..."
-
-declare -A VALUES
-VALUES["cgi.fix_pathinfo"]="0"
-
-source ${BF_INC}/php-replace-ini.sh
-replace-ini VALUES ${PHP_DIR}/php.ini
-
+bf-echo "Setting permissions on ${FREESCOUT}..."
+bf-ch -o www:www -m 0755 -t d ${FREESCOUT}
+bf-ch -o www:www -m 0644 -t f ${FREESCOUT}
 bf-done
