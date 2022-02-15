@@ -17,9 +17,7 @@ ENV \
     # database connection type (valid values: 'mysql' or 'postgresql')
     FREESCOUT_DB_CONN=mysql \
     # database port (e.g. 3306 for MySQL or 5432 for PostgreSQL)
-    FREESCOUT_DB_PORT=3306 \
-    # disable S6 service timeout - handled by timeout-up
-    S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
+    FREESCOUT_DB_PORT=3306
 
 COPY ./overlay /
 COPY ./FREESCOUT_REVISION /tmp/
