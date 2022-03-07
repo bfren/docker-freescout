@@ -65,6 +65,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -84,6 +91,15 @@ jobs:
             bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}
             bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
             bfren/freescout:freescout${{ steps.freescout_revision.outputs.contents }}
+            ghcr.io/bfren/freescout:latest
+            ghcr.io/bfren/freescout:${{ steps.version_major.outputs.contents }}
+            ghcr.io/bfren/freescout:${{ steps.version_minor.outputs.contents }}
+            ghcr.io/bfren/freescout:${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:freescout${{ steps.freescout_major.outputs.contents }}
+            ghcr.io/bfren/freescout:freescout${{ steps.freescout_major.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}
+            ghcr.io/bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:freescout${{ steps.freescout_revision.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
