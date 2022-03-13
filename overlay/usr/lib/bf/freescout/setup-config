@@ -1,7 +1,6 @@
-#!/command/with-contenv bash
+#!/bin/bash
 
 set -euo pipefail
-export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
@@ -9,7 +8,7 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 if [ "${FREESCOUT_EXISTING_INSTALLATION-}" == "1" ] ; then
-    bf-echo "Taking over an existing installation - do not regenerate .env."
+    bf-echo "Taking over an existing installation - do not regenerate .env." "freescout/setup-config"
     exit 0
 fi
 
@@ -19,16 +18,16 @@ fi
 #======================================================================================================================
 
 # ensure all required environment variables are set
-[[ -z "${FREESCOUT_URL-}" ]] && bf-error "FREESCOUT_URL must be set."
-[[ -z "${FREESCOUT_DB_NAME-}" ]] && bf-error "FREESCOUT_DB_NAME must be set."
-[[ -z "${FREESCOUT_DB_USER-}" ]] && bf-error "FREESCOUT_DB_USER must be set."
-[[ -z "${FREESCOUT_DB_PASS-}" ]] && bf-error "FREESCOUT_DB_PASS must be set."
-[[ -z "${FREESCOUT_DB_HOST-}" ]] && bf-error "FREESCOUT_DB_HOST must be set."
+[[ -z "${FREESCOUT_URL-}" ]] && bf-error "FREESCOUT_URL must be set." "freescout/setup-config"
+[[ -z "${FREESCOUT_DB_NAME-}" ]] && bf-error "FREESCOUT_DB_NAME must be set." "freescout/setup-config"
+[[ -z "${FREESCOUT_DB_USER-}" ]] && bf-error "FREESCOUT_DB_USER must be set." "freescout/setup-config"
+[[ -z "${FREESCOUT_DB_PASS-}" ]] && bf-error "FREESCOUT_DB_PASS must be set." "freescout/setup-config"
+[[ -z "${FREESCOUT_DB_HOST-}" ]] && bf-error "FREESCOUT_DB_HOST must be set." "freescout/setup-config"
 
 # generate config from the template
-bf-debug "Generating ${FREESCOUT_ENV}."
+bf-debug "Generating ${FREESCOUT_ENV}." "freescout/setup-config"
 bf-esh ${BF_TEMPLATES}/.env.esh ${FREESCOUT_ENV}
-bf-done
+bf-done "freescout/setup-config"
 
 
 #======================================================================================================================
