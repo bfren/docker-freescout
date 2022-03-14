@@ -31,6 +31,7 @@ apk add --no-cache \
     php8-mbstring=${PHP_VERSION} \
     php8-mysqlnd=${PHP_VERSION} \
     php8-pdo_mysql=${PHP_VERSION} \
+    php8-tokenizer=${PHP_VERSION} \
     php8-xml=${PHP_VERSION} \
     php8-zip=${PHP_VERSION}
 bf-done
