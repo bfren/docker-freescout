@@ -27,7 +27,7 @@ jobs:
         name: Read FreeScout version
         uses: bfren/read-file@v1
         with:
-          file: ./overlay/tmp/FREESCOUT_VERSION
+          file: ./overlay/tmp/FREESCOUT_REVISION
         id: freescout_version
       -
         name: Read image version
