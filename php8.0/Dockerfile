@@ -20,6 +20,7 @@ ENV \
     FREESCOUT_DB_PORT=3306
 
 COPY ./overlay /
+COPY ./php8.0/overlay /
 
 RUN bf-install
 

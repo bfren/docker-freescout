@@ -1,4 +1,4 @@
-name: dev
+name: dev-php8_0
 
 on:
   push:
@@ -7,13 +7,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  test-php8_0:
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout code
         uses: actions/checkout@v2
-  build:
+  build-php8_0:
     runs-on: ubuntu-latest
     steps:
       -
@@ -23,6 +23,12 @@ jobs:
         name: Get repository name
         run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
         shell: bash
+      -
+        name: Read FreeScout version
+        uses: bfren/read-file@v1
+        with:
+          file: ./overlay/tmp/FREESCOUT_REVISION
+        id: freescout_version
       -
         name: Read image version
         uses: bfren/read-file@v1
@@ -53,16 +59,20 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
+          context: .
+          file: ./php8.0/Dockerfile
           build-args: |
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
             BF_VERSION=${{ steps.version.outputs.contents }}
           push: ${{ startsWith(github.ref, 'refs/heads/') }}
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
-            bfren/freescout:dev
-            bfren/freescout:${{ steps.version.outputs.contents }}-beta
-            ghcr.io/bfren/freescout:dev
-            ghcr.io/bfren/freescout:${{ steps.version.outputs.contents }}-beta
+            bfren/freescout:php8.0-dev
+            bfren/freescout:php8.0-${{ steps.version.outputs.contents }}-beta
+            bfren/freescout:php8.0-freescout${{ steps.freescout_version.outputs.contents }}-dev
+            ghcr.io/bfren/freescout:php8.0-dev
+            ghcr.io/bfren/freescout:php8.0-${{ steps.version.outputs.contents }}-beta
+            ghcr.io/bfren/freescout:php8.0-freescout${{ steps.freescout_version.outputs.contents }}-dev
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

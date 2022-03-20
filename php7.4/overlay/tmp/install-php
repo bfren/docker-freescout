@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Install PHP dependencies.
+#======================================================================================================================
+
+apk add --no-cache \
+    php7-curl=${1} \
+    php7-dom=${1} \
+    php7-fileinfo=${1} \
+    php7-gd=${1} \
+    php7-imap=${1} \
+    php7-json=${1} \
+    php7-ldap=${1} \
+    php7-mbstring=${1} \
+    php7-mysqli=${1} \
+    php7-pdo_mysql=${1} \
+    php7-tokenizer=${1} \
+    php7-xml=${1} \
+    php7-zip=${1}
+bf-done
