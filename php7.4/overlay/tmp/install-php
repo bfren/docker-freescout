@@ -9,17 +9,17 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 apk add --no-cache \
-    php7-curl=${PHP_VERSION} \
-    php7-dom=${PHP_VERSION} \
-    php7-fileinfo=${PHP_VERSION} \
-    php7-gd=${PHP_VERSION} \
-    php7-imap=${PHP_VERSION} \
-    php7-json=${PHP_VERSION} \
-    php7-ldap=${PHP_VERSION} \
-    php7-mbstring=${PHP_VERSION} \
-    php7-mysqli=${PHP_VERSION} \
-    php7-pdo_mysql=${PHP_VERSION} \
-    php7-tokenizer=${PHP_VERSION} \
-    php7-xml=${PHP_VERSION} \
-    php7-zip=${PHP_VERSION}
+    php7-curl=${1} \
+    php7-dom=${1} \
+    php7-fileinfo=${1} \
+    php7-gd=${1} \
+    php7-imap=${1} \
+    php7-json=${1} \
+    php7-ldap=${1} \
+    php7-mbstring=${1} \
+    php7-mysqli=${1} \
+    php7-pdo_mysql=${1} \
+    php7-tokenizer=${1} \
+    php7-xml=${1} \
+    php7-zip=${1}
 bf-done
