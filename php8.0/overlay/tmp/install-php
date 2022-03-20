@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Install PHP dependencies.
+#======================================================================================================================
+
+apk add --no-cache \
+    php8-curl=${PHP_VERSION} \
+    php8-dom=${PHP_VERSION} \
+    php8-fileinfo=${PHP_VERSION} \
+    php8-gd=${PHP_VERSION} \
+    php8-imap=${PHP_VERSION} \
+    php8-mbstring=${PHP_VERSION} \
+    php8-mysqli=${PHP_VERSION} \
+    php8-mysqlnd=${PHP_VERSION} \
+    php8-pdo_mysql=${PHP_VERSION} \
+    php8-tokenizer=${PHP_VERSION} \
+    php8-xml=${PHP_VERSION} \
+    php8-zip=${PHP_VERSION}
+bf-done

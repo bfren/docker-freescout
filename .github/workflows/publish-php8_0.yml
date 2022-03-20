@@ -1,4 +1,4 @@
-name: publish
+name: publish-php8_0
 
 on:
   release:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  publish-php8_0:
     runs-on: ubuntu-latest
     steps:
       -
@@ -17,23 +17,23 @@ jobs:
         run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
         shell: bash
       -
-        name: Read FreeScout version - major
+        name: Read PHP version - revision
         uses: bfren/read-file@v1
         with:
-          file: ./overlay/tmp/FREESCOUT_MAJOR
-        id: freescout_major
+          file: ./php8.0/overlay/tmp/PHP_REVISION
+        id: php_revision
       -
-        name: Read FreeScout version - minor
+        name: Read FreeScout minor version
         uses: bfren/read-file@v1
         with:
           file: ./overlay/tmp/FREESCOUT_MINOR
         id: freescout_minor
       -
-        name: Read FreeScout version - revision
+        name: Read FreeScout version
         uses: bfren/read-file@v1
         with:
-          file: ./overlay/tmp/FREESCOUT_REVISION
-        id: freescout_revision
+          file: ./overlay/tmp/FREESCOUT_VERSION
+        id: freescout_version
       -
         name: Read image version
         uses: bfren/read-file@v1
@@ -76,30 +76,40 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
+          context: .
+          file: ./php8.0/Dockerfile
           build-args: |
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
             BF_VERSION=${{ steps.version.outputs.contents }}
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
-            bfren/freescout:latest
-            bfren/freescout:${{ steps.version_major.outputs.contents }}
-            bfren/freescout:${{ steps.version_minor.outputs.contents }}
-            bfren/freescout:${{ steps.version.outputs.contents }}
-            bfren/freescout:freescout${{ steps.freescout_major.outputs.contents }}
-            bfren/freescout:freescout${{ steps.freescout_major.outputs.contents }}-${{ steps.version.outputs.contents }}
             bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}
             bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
-            bfren/freescout:freescout${{ steps.freescout_revision.outputs.contents }}
-            ghcr.io/bfren/freescout:latest
-            ghcr.io/bfren/freescout:${{ steps.version_major.outputs.contents }}
-            ghcr.io/bfren/freescout:${{ steps.version_minor.outputs.contents }}
-            ghcr.io/bfren/freescout:${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/freescout:freescout${{ steps.freescout_major.outputs.contents }}
-            ghcr.io/bfren/freescout:freescout${{ steps.freescout_major.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}
+            bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/freescout:php8.0
+            bfren/freescout:php8.0-${{ steps.version_major.outputs.contents }}
+            bfren/freescout:php8.0-${{ steps.version_minor.outputs.contents }}
+            bfren/freescout:php8.0-${{ steps.version.outputs.contents }}
+            bfren/freescout:php8.0-freescout${{ steps.freescout_minor.outputs.contents }}
+            bfren/freescout:php8.0-freescout${{ steps.freescout_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/freescout:php8.0-freescout${{ steps.freescout_version.outputs.contents }}
+            bfren/freescout:php8.0-freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/freescout:php${{ steps.php_revision.outputs.contents }}
             ghcr.io/bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}
             ghcr.io/bfren/freescout:freescout${{ steps.freescout_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/freescout:freescout${{ steps.freescout_revision.outputs.contents }}
+            ghcr.io/bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}
+            ghcr.io/bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:php8.0
+            ghcr.io/bfren/freescout:php8.0-${{ steps.version_major.outputs.contents }}
+            ghcr.io/bfren/freescout:php8.0-${{ steps.version_minor.outputs.contents }}
+            ghcr.io/bfren/freescout:php8.0-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:php8.0-freescout${{ steps.freescout_minor.outputs.contents }}
+            ghcr.io/bfren/freescout:php8.0-freescout${{ steps.freescout_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:php8.0-freescout${{ steps.freescout_version.outputs.contents }}
+            ghcr.io/bfren/freescout:php8.0-freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:php${{ steps.php_revision.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

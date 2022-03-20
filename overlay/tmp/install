@@ -23,6 +23,10 @@ apk add --no-cache --virtual .install \
     git
 bf-done
 
+bf-echo "Installing PHP v${PHP_VERSION}..."
+chmod +x ./install-php && ./install-php ${PHP_VERSION}
+bf-done
+
 bf-echo "Installing required PHP modules for v${PHP_VERSION}..."
 apk add --no-cache \
     php8-curl=${PHP_VERSION} \
