@@ -7,7 +7,7 @@ docker pull bfren/alpine
 BASE_REVISION="5.1.14"
 echo "Base: ${BASE_REVISION}"
 
-PHP_VERSIONS="7.4 8.0"
+PHP_VERSIONS="7.4 8.0 8.1"
 for V in ${PHP_VERSIONS} ; do
 
     echo "WordPress for PHP ${V}"
