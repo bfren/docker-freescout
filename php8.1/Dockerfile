@@ -6,6 +6,8 @@ ARG BF_IMAGE
 ARG BF_VERSION
 
 ENV \
+    # disable debug output by default
+    BF_DEBUG=0 \
     # set to the application's external URL
     FREESCOUT_URL= \
     # admin user's first name
