@@ -13,6 +13,7 @@ apk add --no-cache \
     php7-dom@edgetest=${1} \
     php7-fileinfo@edgetest=${1} \
     php7-gd@edgetest=${1} \
+    php7-iconv@edgetest=${1} \
     php7-imap@edgetest=${1} \
     php7-json@edgetest=${1} \
     php7-ldap@edgetest=${1} \

@@ -13,6 +13,7 @@ apk add --no-cache \
     php81-dom=${1} \
     php81-fileinfo=${1} \
     php81-gd=${1} \
+    php81-iconv=${1} \
     php81-imap=${1} \
     php81-mbstring=${1} \
     php81-mysqli=${1} \
