@@ -8,7 +8,7 @@ export BF_E=`basename ${0}`
 # If setup completed succesfully, write nice message and exit.
 #======================================================================================================================
 
-if [ "${SETUP_COMPLETE-}" = "1" ] ; then
+if [ "${SETUP_COMPLETE-}" -eq "1" ] ; then
     bf-clear
     bf-ok "FreeScout setup complete."
     exit 0
@@ -20,7 +20,7 @@ fi
 #======================================================================================================================
 
 # if we weren't taking over an existing installation, delete .env file to be regenerated next time
-[[ "${FREESCOUT_EXISTING_INSTALLATION-}" != "1" ]] && rm "${FREESCOUT_ENV}"
+[[ "${FREESCOUT_EXISTING_INSTALLATION-}" -ne "1" ]] && rm "${FREESCOUT_ENV}"
 
 # terminate the container
 bf-notok "FreeScout setup did not complete successfully, terminating container."
