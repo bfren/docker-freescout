@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/command/with-contenv bash
 
 set -euo pipefail
 
@@ -7,7 +7,7 @@ set -euo pipefail
 # If an existing installation was detected, do not proceed.
 #======================================================================================================================
 
-if [ "${FREESCOUT_EXISTING_INSTALLATION-}" == "1" ] ; then
+if [ "${FREESCOUT_EXISTING_INSTALLATION-}" -eq "1" ] ; then
     bf-echo "Taking over an existing installation - do not regenerate .env." "freescout/setup-config"
     exit 0
 fi

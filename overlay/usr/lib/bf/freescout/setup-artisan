@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/command/with-contenv bash
 
 set -euo pipefail
 
@@ -11,7 +11,7 @@ bf-echo "Run artisan setup." "freescout/setup-artisan"
 
 cd ${FREESCOUT_SRC}
 
-if [ "${FREESCOUT_EXISTING_INSTALLATION-}" != "1" ] ; then
+if [ "${FREESCOUT_EXISTING_INSTALLATION-}" -ne "1" ] ; then
     bf-debug "Generate key." "freescout/setup-artisan"
     php artisan key:generate
 fi
@@ -27,7 +27,7 @@ php artisan config:clear
 bf-debug "Migrate database." "freescout/setup-artisan"
 php artisan migrate --force
 
-if [ "${FREESCOUT_EXISTING_INSTALLATION-}" != "1" ] ; then
+if [ "${FREESCOUT_EXISTING_INSTALLATION-}" -ne "1" ] ; then
 
     # ensure all required environment variables are set
     [[ -z "${FREESCOUT_ADMIN_FIRSTNAME-}" ]] && bf-error "FREESCOUT_ADMIN_FIRSTNAME must be set." "freescout/setup-artisan"
