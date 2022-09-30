@@ -9,18 +9,18 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 apk add --no-cache \
-    php7-curl@edgetest=${1} \
-    php7-dom@edgetest=${1} \
-    php7-fileinfo@edgetest=${1} \
-    php7-gd@edgetest=${1} \
-    php7-iconv@edgetest=${1} \
-    php7-imap@edgetest=${1} \
-    php7-json@edgetest=${1} \
-    php7-ldap@edgetest=${1} \
-    php7-mbstring@edgetest=${1} \
-    php7-mysqli@edgetest=${1} \
-    php7-pdo_mysql@edgetest=${1} \
-    php7-tokenizer@edgetest=${1} \
-    php7-xml@edgetest=${1} \
-    php7-zip@edgetest=${1}
+    php7-curl=${1} \
+    php7-dom=${1} \
+    php7-fileinfo=${1} \
+    php7-gd=${1} \
+    php7-iconv=${1} \
+    php7-imap=${1} \
+    php7-json=${1} \
+    php7-ldap=${1} \
+    php7-mbstring=${1} \
+    php7-mysqli=${1} \
+    php7-pdo_mysql=${1} \
+    php7-tokenizer=${1} \
+    php7-xml=${1} \
+    php7-zip=${1}
 bf-done
