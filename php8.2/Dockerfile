@@ -1,4 +1,4 @@
-FROM bfren/nginx-php:php7.4-5.3.10
+FROM bfren/nginx-php:php8.2-5.3.10
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-freescout"
 
@@ -24,7 +24,7 @@ ENV \
     FREESCOUT_DB_PORT=3306
 
 COPY ./overlay /
-COPY ./php7.4/overlay /
+COPY ./php8.2/overlay /
 
 RUN bf-install
 
