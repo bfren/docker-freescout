@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Install PHP dependencies.
+#======================================================================================================================
+
+apk add --no-cache \
+    php82-curl=${1} \
+    php82-dom=${1} \
+    php82-fileinfo=${1} \
+    php82-gd=${1} \
+    php82-iconv=${1} \
+    php82-imap=${1} \
+    php82-mbstring=${1} \
+    php82-mysqli=${1} \
+    php82-mysqlnd=${1} \
+    php82-pdo_mysql=${1} \
+    php82-tokenizer=${1} \
+    php82-xml=${1} \
+    php82-zip=${1}
+bf-done
