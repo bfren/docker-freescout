@@ -97,15 +97,6 @@ jobs:
             bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}
             bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
             bfren/freescout:php${{ steps.php_revision.outputs.contents }}
-            ghcr.io/bfren/freescout:php${{ matrix.php }}
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-${{ steps.version_major.outputs.contents }}
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-${{ steps.version_minor.outputs.contents }}
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_minor.outputs.contents }}
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/freescout:php${{ steps.php_revision.outputs.contents }}
       -
         name: Build and push default tags
         id: docker_build_default
@@ -122,8 +113,6 @@ jobs:
           tags: |
             bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}
             bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}
-            ghcr.io/bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
