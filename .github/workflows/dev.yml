@@ -74,9 +74,6 @@ jobs:
             bfren/freescout:php${{ matrix.php }}-dev
             bfren/freescout:php${{ matrix.php }}-${{ steps.version.outputs.contents }}-beta
             bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}-dev
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-dev
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-${{ steps.version.outputs.contents }}-beta
-            ghcr.io/bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}-dev
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
