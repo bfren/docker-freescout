@@ -66,8 +66,8 @@ bf-done
 # Cleanup.
 #======================================================================================================================
 
-bf-echo "Removing /www files."
-rm -f /www/*
+bf-echo "Removing /www files and directories."
+rm -rf /www/*
 
 bf-echo "Removing installation dependencies."
 apk del .install
