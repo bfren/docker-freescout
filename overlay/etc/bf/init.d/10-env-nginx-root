@@ -10,4 +10,4 @@ export BF_E=`basename ${0}`
 
 FREESCOUT_SRC=${BF_SRC}/freescout
 bf-env "FREESCOUT_SRC" "${FREESCOUT_SRC}"
-bf-env "NGINX_ROOT" "${FREESCOUT_SRC}/public"
+bf-env "NGINX_PUBLIC" "${FREESCOUT_SRC}/public"
