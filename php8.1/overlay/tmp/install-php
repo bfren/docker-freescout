@@ -15,6 +15,7 @@ apk add --no-cache \
     php81-gd=${1} \
     php81-iconv=${1} \
     php81-imap=${1} \
+    php81-intl=${1} \
     php81-mbstring=${1} \
     php81-mysqli=${1} \
     php81-mysqlnd=${1} \
