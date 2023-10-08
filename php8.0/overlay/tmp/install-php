@@ -22,5 +22,6 @@ apk add --no-cache \
     php8-pdo_mysql=${1} \
     php8-tokenizer=${1} \
     php8-xml=${1} \
+    php8-xmlwriter=${1} \
     php8-zip=${1}
 bf-done

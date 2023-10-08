@@ -22,5 +22,6 @@ apk add --no-cache \
     php82-pdo_mysql=${1} \
     php82-tokenizer=${1} \
     php82-xml=${1} \
+    php82-xmlwriter=${1} \
     php82-zip=${1}
 bf-done
