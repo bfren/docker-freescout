@@ -65,7 +65,7 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bfren/freescout:php${{ matrix.php }}-dev
-            bfren/freescout:php${{ matrix.php }}-${{ steps.version.outputs.contents }}-beta
+            bfren/freescout:php${{ matrix.php }}-${{ steps.version.outputs.contents }}-dev
             bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}-dev
       -
         name: Image digest
