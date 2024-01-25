@@ -10,27 +10,27 @@ COPY ./php7.4/overlay /
 
 ENV \
     # set to the application's external URL
-    FS_URL= \
+    BF_FS_URL= \
     # admin user's first name
-    FS_ADMIN_FIRSTNAME= \
+    BF_FS_ADMIN_FIRSTNAME= \
     # admin user's last name
-    FS_ADMIN_LASTNAME= \
+    BF_FS_ADMIN_LASTNAME= \
     # admin user's email address
-    FS_ADMIN_EMAIL= \
+    BF_FS_ADMIN_EMAIL= \
     # admin user's password
-    FS_ADMIN_PASS= \
+    BF_FS_ADMIN_PASS= \
     # database connection type (valid values: 'mysql' or 'postgresql')
-    FS_DB_CONN=mysql \
+    BF_FS_DB_CONN=mysql \
     # database host
-    FS_DB_HOST= \
+    BF_FS_DB_HOST= \
     # database port (e.g. 3306 for MySQL or 5432 for PostgreSQL)
-    FS_DB_PORT=3306 \
+    BF_FS_DB_PORT=3306 \
     # database name
-    FS_DB_NAME=freescout \
+    BF_FS_DB_NAME=freescout \
     # database user account
-    FS_DB_USER= \
+    BF_FS_DB_USER= \
     # database password
-    FS_DB_PASS=
+    BF_FS_DB_PASS=
 
 RUN bf-install
 
