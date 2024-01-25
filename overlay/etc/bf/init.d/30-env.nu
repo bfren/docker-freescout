@@ -20,4 +20,5 @@ def main [] {
     bf env set FS_SRC_MODULES $"($fs_src)/Modules"
     bf env set FS_SRC_PUBLIC_MODULES $"($fs_src)/public/modules"
     bf env set FS_SRC_PUBLIC_STORAGE $"($fs_src)/public/storage"
+    bf env set FS_SRC_STORAGE $"($fs_src)/storage"
 }

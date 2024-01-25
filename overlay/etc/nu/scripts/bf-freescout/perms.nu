@@ -7,7 +7,7 @@ const user = "www:www"
 export def set [] {
     # set permissions for data and cache directories
     apply $"(bf env FS_DATA)"
-    apply $"(bf env FS_SRC_CACHE)"
+    apply $"(bf env FS_SRC_STORAGE)"
 }
 
 # Apply standard permissions to a path

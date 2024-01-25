@@ -13,7 +13,7 @@ def main [] {
     create_if_not_link (bf env FS_SRC_LOGS) (bf env FS_LOGS)
     create_if_not_link (bf env FS_SRC_MODULES) (bf env FS_MODULES)
     create_if_not_link (bf env FS_SRC_APP_STORAGE) (bf env FS_STORAGE)
-    create_if_not_link (bf env FS_SRC_PUBLIC_STORAGE) (bf env FS_STORAGE)
+    create_if_not_link (bf env FS_SRC_PUBLIC_STORAGE) (bf env FS_SRC_APP_STORAGE)
 
     let fs_modules = bf env FS_MODULES
     ls $fs_modules | where type == dir | get name | each {|x|
