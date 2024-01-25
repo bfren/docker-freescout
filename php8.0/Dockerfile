@@ -9,22 +9,28 @@ COPY ./overlay /
 COPY ./php8.0/overlay /
 
 ENV \
-    # disable debug output by default
-    BF_DEBUG=0 \
     # set to the application's external URL
-    FREESCOUT_URL= \
+    FS_URL= \
     # admin user's first name
-    FREESCOUT_ADMIN_FIRSTNAME= \
+    FS_ADMIN_FIRSTNAME= \
     # admin user's last name
-    FREESCOUT_ADMIN_LASTNAME= \
+    FS_ADMIN_LASTNAME= \
     # admin user's email address
-    FREESCOUT_ADMIN_EMAIL= \
+    FS_ADMIN_EMAIL= \
     # admin user's password
-    FREESCOUT_ADMIN_PASS= \
+    FS_ADMIN_PASS= \
     # database connection type (valid values: 'mysql' or 'postgresql')
-    FREESCOUT_DB_CONN=mysql \
+    FS_DB_CONN=mysql \
+    # database host
+    FS_DB_HOST= \
     # database port (e.g. 3306 for MySQL or 5432 for PostgreSQL)
-    FREESCOUT_DB_PORT=3306
+    FS_DB_PORT=3306 \
+    # database name
+    FS_DB_NAME=freescout \
+    # database user account
+    FS_DB_USER= \
+    # database password
+    FS_DB_PASS=
 
 RUN bf-install
 

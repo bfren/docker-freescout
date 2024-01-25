@@ -1,6 +1,6 @@
 FROM bfren/nginx-php:php8.3-7.1.5
 
-LABEL org.opencontainers.image.source="https://github.com/bfren/docker-FS"
+LABEL org.opencontainers.image.source="https://github.com/bfren/docker-freescout"
 
 ARG BF_IMAGE
 ARG BF_VERSION
@@ -30,7 +30,7 @@ ENV \
     # database user account
     FS_DB_USER= \
     # database password
-    FS_DB_PASS= \
+    FS_DB_PASS=
 
 RUN bf-install
 
