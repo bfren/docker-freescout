@@ -1,4 +1,4 @@
-#!/command/with-contenv bash
+#!/bin/withenv sh
 
 set -euo pipefail
 export BF_E=`basename ${0}`
@@ -9,4 +9,4 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 sleep 30
-freescout-set-permissions >> /dev/null 2>&1
+nu -c "use bf-freescout perms ; perms set" >> /dev/null 2>&1

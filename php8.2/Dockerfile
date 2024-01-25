@@ -1,30 +1,36 @@
-FROM bfren/nginx-php:php8.2-6.0.21
+FROM bfren/nginx-php:php8.2-7.1.5
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-freescout"
 
 ARG BF_IMAGE
 ARG BF_VERSION
 
-ENV \
-    # disable debug output by default
-    BF_DEBUG=0 \
-    # set to the application's external URL
-    FREESCOUT_URL= \
-    # admin user's first name
-    FREESCOUT_ADMIN_FIRSTNAME= \
-    # admin user's last name
-    FREESCOUT_ADMIN_LASTNAME= \
-    # admin user's email address
-    FREESCOUT_ADMIN_EMAIL= \
-    # admin user's password
-    FREESCOUT_ADMIN_PASS= \
-    # database connection type (valid values: 'mysql' or 'postgresql')
-    FREESCOUT_DB_CONN=mysql \
-    # database port (e.g. 3306 for MySQL or 5432 for PostgreSQL)
-    FREESCOUT_DB_PORT=3306
-
 COPY ./overlay /
 COPY ./php8.2/overlay /
+
+ENV \
+    # set to the application's external URL
+    BF_FS_URL= \
+    # admin user's first name
+    BF_FS_ADMIN_FIRSTNAME= \
+    # admin user's last name
+    BF_FS_ADMIN_LASTNAME= \
+    # admin user's email address
+    BF_FS_ADMIN_EMAIL= \
+    # admin user's password
+    BF_FS_ADMIN_PASS= \
+    # database connection type (valid values: 'mysql' or 'postgresql')
+    BF_FS_DB_CONN=mysql \
+    # database host
+    BF_FS_DB_HOST= \
+    # database port (e.g. 3306 for MySQL or 5432 for PostgreSQL)
+    BF_FS_DB_PORT=3306 \
+    # database name
+    BF_FS_DB_NAME=freescout \
+    # database user account
+    BF_FS_DB_USER= \
+    # database password
+    BF_FS_DB_PASS=
 
 RUN bf-install
 

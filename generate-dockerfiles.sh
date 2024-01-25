@@ -4,10 +4,10 @@ set -euo pipefail
 
 docker pull bfren/alpine
 
-BASE_VERSION="6.0.21"
+BASE_VERSION="7.1.5"
 echo "Base: ${BASE_VERSION}"
 
-PHP_VERSIONS="7.4 8.0 8.1 8.2"
+PHP_VERSIONS="7.4 8.0 8.1 8.2 8.3"
 for V in ${PHP_VERSIONS} ; do
 
     echo "WordPress for PHP ${V}"
