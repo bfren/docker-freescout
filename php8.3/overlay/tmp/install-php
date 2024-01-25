@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Install PHP dependencies.
+#======================================================================================================================
+
+apk add --no-cache \
+    php83-curl=${1} \
+    php83-dom=${1} \
+    php83-fileinfo=${1} \
+    php83-gd=${1} \
+    php83-iconv=${1} \
+    php83-imap=${1} \
+    php83-intl=${1} \
+    php83-mbstring=${1} \
+    php83-mysqli=${1} \
+    php83-mysqlnd=${1} \
+    php83-pdo_mysql=${1} \
+    php83-tokenizer=${1} \
+    php83-xml=${1} \
+    php83-xmlwriter=${1} \
+    php83-zip=${1}
+bf-done

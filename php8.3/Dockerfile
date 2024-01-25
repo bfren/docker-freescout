@@ -1,4 +1,4 @@
-FROM bfren/nginx-php:php<%= ${PHP_MINOR} %>-<%= ${BASE_VERSION} %>
+FROM bfren/nginx-php:php8.3-7.1.5
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-freescout"
 
@@ -6,7 +6,7 @@ ARG BF_IMAGE
 ARG BF_VERSION
 
 COPY ./overlay /
-COPY ./php<%= ${PHP_MINOR} %>/overlay /
+COPY ./php8.3/overlay /
 
 ENV \
     # disable debug output by default

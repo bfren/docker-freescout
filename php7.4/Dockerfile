@@ -1,9 +1,12 @@
-FROM bfren/nginx-php:php7.4-6.0.21
+FROM bfren/nginx-php:php7.4-7.1.5
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-freescout"
 
 ARG BF_IMAGE
 ARG BF_VERSION
+
+COPY ./overlay /
+COPY ./php7.4/overlay /
 
 ENV \
     # disable debug output by default
@@ -22,9 +25,6 @@ ENV \
     FREESCOUT_DB_CONN=mysql \
     # database port (e.g. 3306 for MySQL or 5432 for PostgreSQL)
     FREESCOUT_DB_PORT=3306
-
-COPY ./overlay /
-COPY ./php7.4/overlay /
 
 RUN bf-install
 
