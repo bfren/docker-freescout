@@ -1,0 +1,15 @@
+-curl
+-dom
+-fileinfo
+-gd
+-iconv
+-imap
+-intl
+-mbstring
+-mysqli
+-mysqlnd
+-pdo_mysql
+-tokenizer
+-xml
+-xmlwriter
+-zip

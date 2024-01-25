@@ -1,7 +1,6 @@
-#!/command/with-contenv sh
+#!/bin/withenv sh
 
 set -euo pipefail
-export BF_E="${PWD##*/}/$(basename ${0})"
 
 
 #======================================================================================================================
@@ -10,4 +9,5 @@ export BF_E="${PWD##*/}/$(basename ${0})"
 #======================================================================================================================
 
 bf-echo "Running FreeScout task scheduler."
-php ${FREESCOUT_SRC}/artisan schedule:run >> /dev/null 2>&1
+SRC=$(bf-env FS_SRC)
+php ${SRC}/artisan schedule:run >> /dev/null 2>&1

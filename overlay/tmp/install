@@ -1,73 +1,49 @@
-#!/bin/sh
+#!/usr/bin/nu
 
-set -euo pipefail
-export BF_E=`basename ${0}`
+use bf
+use bf-php
 
+# Absolute path to FreeScout source directory
+const src = "/etc/bf/src/freescout"
 
-#======================================================================================================================
-# Get PHP version.
-#======================================================================================================================
+def main [] {
+    # installed required and recommended extensions
+    cd /tmp
+    bf write $"Installing PHP extensions."
+    bf-php ext install_from_file
 
-cd /tmp
+    # install FreeScout source files, content directory and default plugins
+    bf write debug $"FreeScout source directory: ($src)."
+    install_source
 
-PHP_VERSION=$(cat PHP_BUILD)
-bf-echo "PHP version ${PHP_VERSION}."
+    # add bf-freescout module to config
+    bf config use bf-freescout
 
+    # cleanup
+    bf write "Removing /www files and directories."
+    rm -rf /www/*
+}
 
-#======================================================================================================================
-# Install PHP dependencies.
-#======================================================================================================================
+# Download and install FreeScout source files
+def install_source [] {
+    # add dependencies
+    bf write "Adding installation dependencies." install_source
+    bf pkg install ["--virtual .install" "git"]
 
-bf-echo "Installing installation dependencies..."
-apk add --no-cache --virtual .install \
-    git
-bf-done
+    # get version
+    let fs_version = bf fs read FREESCOUT_REVISION
 
-bf-echo "Installing PHP v${PHP_VERSION}..."
-chmod +x ./install-php && ./install-php ${PHP_VERSION}
-bf-done
+    # save FreeScout version to build log
+    bf build add FreeScout $fs_version
 
+    # clone source files
+    bf write $"Cloning FreeScout ($fs_version) into ($src)."
+    ^git clone --depth 1 --branch $fs_version https://github.com/freescout-helpdesk/freescout $src
 
-#======================================================================================================================
-# Get FreeScout environment variables.
-#======================================================================================================================
+    # set permissions
+    bf write $"Setting permissions on ($src)." install_source
+    [$src "www:www" 0400 0500] | bf ch apply
 
-SRC=/etc/bf/src
-bf-echo "Source directory: ${SRC}."
-
-FREESCOUT=freescout
-FREESCOUT_SRC=${SRC}/${FREESCOUT}
-bf-echo "FreeScout source directory: ${FREESCOUT_SRC}."
-
-FREESCOUT_VERSION=$(cat FREESCOUT_REVISION)
-bf-echo "FreeScout version ${FREESCOUT_VERSION}."
-
-
-#======================================================================================================================
-# Download and install FreeScout.
-#======================================================================================================================
-
-bf-echo "Cloning FreeScout v${FREESCOUT_VERSION} into ${FREESCOUT_SRC}"
-git clone --depth 1 --branch ${FREESCOUT_VERSION} https://github.com/freescout-helpdesk/freescout ${FREESCOUT_SRC}
-bf-done
-
-
-#======================================================================================================================
-# Set permissions on source files.
-#======================================================================================================================
-
-bf-echo "Setting permissions on ${FREESCOUT_SRC}..."
-bf-ch -o www:www -m 0755 -t d ${FREESCOUT_SRC}
-bf-ch -o www:www -m 0644 -t f ${FREESCOUT_SRC}
-bf-done
-
-
-#======================================================================================================================
-# Cleanup.
-#======================================================================================================================
-
-bf-echo "Removing /www files and directories."
-rm -rf /www/*
-
-bf-echo "Removing installation dependencies."
-apk del .install
+    # remove installation dependencies
+    bf pkg remove [".install"]
+}
