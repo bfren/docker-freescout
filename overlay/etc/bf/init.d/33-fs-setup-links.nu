@@ -17,7 +17,8 @@ def main [] {
 
     let fs_modules = bf env FS_MODULES
     ls $fs_modules | where type == dir | get name | each {|x|
-        create_if_not_link $"(bf env FS_SRC_PUBLIC_MODULES)/($x | path basename | str downcase)" $"($x)/Public"
+        let module_name = $x | path basename | str downcase
+        create_if_not_link $"(bf env FS_SRC_PUBLIC_MODULES)/($module_name)" $"($x)/Public"
     }
 
     # set permissions
