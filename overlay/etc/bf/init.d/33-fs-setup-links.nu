@@ -9,14 +9,14 @@ def main [] {
     # link source to /data
     bf write "Linking source to volume..."
     create_if_not_link (bf env FS_SRC_ENV) (bf env FS_ENV)
+    create_if_not_link (bf env FS_SRC_ATTACHMENTS) (bf env FS_ATTACHMENTS)
     create_if_not_link (bf env FS_SRC_LOGS) (bf env FS_LOGS)
     create_if_not_link (bf env FS_SRC_MODULES) (bf env FS_MODULES)
-    create_if_not_link (bf env FS_SRC_PUBLIC_STORAGE) (bf env FS_PUBLIC)
+    create_if_not_link (bf env FS_SRC_PUBLIC) (bf env FS_PUBLIC)
 
     let fs_modules = bf env FS_MODULES
-    let fs_src_public_modules = bf env FS_SRC_PUBLIC_MODULES
     ls $fs_modules | where type == dir | get name | each {|x|
-        create_if_not_link $"($fs_src_public_modules)/($x | path basename)" $x
+        create_if_not_link $"(bf env FS_PUBLIC)/modules/($x | path basename)" $x
     }
 
     # set permissions

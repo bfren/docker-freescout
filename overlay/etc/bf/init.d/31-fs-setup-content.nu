@@ -14,13 +14,15 @@ def main [] {
     if (bf env FS_ENV | bf fs is_not_file) {
         bf write $"New installation - moving source modules and storage to ($fs_data)."
         bf-freescout install fresh
+        move_if_not_link (bf env FS_SRC_ATTACHMENTS) $fs_data
         move_if_not_link (bf env FS_SRC_LOGS) $fs_data
         move_if_not_link (bf env FS_SRC_MODULES) $fs_data
+        move_if_not_link (bf env FS_SRC_PUBLIC) $fs_data
     } else {
-        bf write $"Taking over an existing installation - deleting default environment, modules and storage."
-        delete_if_not_link (bf env FS_SRC_ENV)
+        delete_if_not_link (bf env FS_SRC_ATTACHMENTS)
         delete_if_not_link (bf env FS_SRC_LOGS)
         delete_if_not_link (bf env FS_SRC_MODULES)
+        delete_if_not_link (bf env FS_SRC_PUBLIC)
     }
 }
 
