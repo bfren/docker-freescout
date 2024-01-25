@@ -11,5 +11,7 @@ def main [] {
         let fs_env = bf env FS_ENV
         bf write $"Generating ($fs_env)."
         bf esh template $fs_env
+    } else {
+        bf write "Using existing .env file."
     }
 }
