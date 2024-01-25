@@ -8,6 +8,6 @@ set -euo pipefail
 # This is because on Alpine the scheduler doesn't work correctly when run through the cron.
 #======================================================================================================================
 
-bf-echo "Running FreeScout task scheduler."
+bf-write "Running FreeScout task scheduler."
 SRC=$(bf-env FS_SRC)
 php ${SRC}/artisan schedule:run >> /dev/null 2>&1
