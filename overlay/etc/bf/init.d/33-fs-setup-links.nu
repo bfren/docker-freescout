@@ -1,4 +1,5 @@
 use bf
+use bf-freescout
 bf env load
 
 def main [] {
