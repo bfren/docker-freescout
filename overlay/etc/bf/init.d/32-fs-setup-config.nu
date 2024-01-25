@@ -14,8 +14,4 @@ def main [] {
     } else {
         bf write "Taking over an existing installation - do not regenerate .env file."
     }
-
-    # set permissions
-    bf write "Setting permissions on data directory."
-    bf-freescout perms set
 }

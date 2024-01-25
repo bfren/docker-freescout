@@ -10,7 +10,7 @@ def main [] {
     create_if_not_link (bf env FS_SRC_ENV) (bf env FS_ENV)
     create_if_not_link (bf env FS_SRC_MODULES) (bf env FS_MODULES)
     create_if_not_link (bf env FS_SRC_STORAGE) (bf env FS_STORAGE)
-    create_if_not_link (bf env FS_SRC_PUBLIC_STORAGE) (bf env FS_STORAGE_PUBLIC)
+    create_if_not_link (bf env FS_SRC_PUBLIC_STORAGE) (bf env FS_APP_STORAGE)
 
     let fs_modules = bf env FS_MODULES
     let fs_src_public_modules = bf env FS_SRC_PUBLIC_MODULES
@@ -18,7 +18,9 @@ def main [] {
         create_if_not_link $"($fs_src_public_modules)/($x | path basename)" $x
     }
 
-    return
+    # set permissions
+    bf write "Setting permissions on data directory."
+    bf-freescout perms set
 }
 
 # Create a link to a target if the link does not exist.
