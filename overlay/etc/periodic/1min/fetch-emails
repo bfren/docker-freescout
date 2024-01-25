@@ -10,5 +10,5 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 SRC=$(bf-env FS_SRC)
-LOG=$(bf-env FS_STORAGE_LOGS)
+LOG=$(bf-env FS_LOGS)
 php ${SRC}/artisan freescout:fetch-emails >> ${LOG}/fetch-emails.log
