@@ -14,20 +14,20 @@ def main [] {
     if (bf env FS_ENV | bf fs is_not_file) {
         bf write $"New installation - moving source modules and storage to ($fs_data)."
         bf-freescout install fresh
-        move_if_not_link (bf env FS_SRC_ATTACHMENTS) $fs_data
-        move_if_not_link (bf env FS_SRC_LOGS) $fs_data
+        move_if_not_link (bf env FS_SRC_STORAGE_ATTACHMENTS) $fs_data
+        move_if_not_link (bf env FS_SRC_STORAGE_LOGS) $fs_data
         move_if_not_link (bf env FS_SRC_MODULES) $fs_data
-        move_if_not_link (bf env FS_SRC_APP_STORAGE) $fs_data
+        move_if_not_link (bf env FS_SRC_STORAGE_APP) $fs_data
     } else {
-        delete_if_not_link (bf env FS_SRC_ATTACHMENTS)
-        delete_if_not_link (bf env FS_SRC_LOGS)
+        delete_if_not_link (bf env FS_SRC_STORAGE_ATTACHMENTS)
+        delete_if_not_link (bf env FS_SRC_STORAGE_LOGS)
         delete_if_not_link (bf env FS_SRC_MODULES)
-        delete_if_not_link (bf env FS_SRC_APP_STORAGE)
+        delete_if_not_link (bf env FS_SRC_STORAGE_APP)
         delete_if_not_link (bf env FS_SRC_PUBLIC_STORAGE)
     }
 
     # create cache directory
-    mkdir (bf env FS_SRC_CACHE)
+    mkdir (bf env FS_SRC_STORAGE_CACHE)
 }
 
 # Delete a file or directory if it is not a link.
