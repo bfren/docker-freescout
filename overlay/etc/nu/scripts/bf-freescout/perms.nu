@@ -13,6 +13,6 @@ export def set [] {
     # set permissions for build directories
     let fs_public = bf env FS_SRC_PUBLIC
     bf write $"Setting permissions for ($fs_public)." perms/set
-    [$"($fs_public)/css/builds" $user 0644 0755]
-    [$"($fs_public)/js/builds" $user 0644 0755]
+    [$"($fs_public)/css/builds" $user 0644 0755] | bf ch apply
+    [$"($fs_public)/js/builds" $user 0644 0755] | bf ch apply
 }
