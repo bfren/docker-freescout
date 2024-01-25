@@ -29,20 +29,20 @@ def main [] {
     # run database migrations
     ^php artisan migrate --force
 
-    # if this is not a fresh installation we're finished
-    if not (bf-freescout install is_fresh) { return }
-
-    # create user account
-    bf write debug " .. creating admin user"
-    let args = [
-        "-n"
-        "freescout:create-user"
-        "--role" "admin"
-        "--firstName" (bf env FS_ADMIN_FIRSTNAME)
-        "--lastName" (bf env FS_ADMIN_LASTNAME)
-        "--email" (bf env FS_ADMIN_EMAIL)
-        "--password" (bf env FS_ADMIN_PASS)
-    ]
+    # if this is a fresh installation, add the admin user account
+    if (bf-freescout install is_fresh) {
+        # create user account
+        bf write debug " .. creating admin user"
+        let args = [
+            "-n"
+            "freescout:create-user"
+            "--role" "admin"
+            "--firstName" (bf env FS_ADMIN_FIRSTNAME)
+            "--lastName" (bf env FS_ADMIN_LASTNAME)
+            "--email" (bf env FS_ADMIN_EMAIL)
+            "--password" (bf env FS_ADMIN_PASS)
+        ]
+    }
 
     # mark setup as complete
     bf-freescout install complete
