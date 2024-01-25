@@ -25,6 +25,9 @@ def main [] {
         delete_if_not_link (bf env FS_SRC_APP_STORAGE)
         delete_if_not_link (bf env FS_SRC_PUBLIC_STORAGE)
     }
+
+    # create cache directory
+    mkdir (bf env FS_SRC_CACHE)
 }
 
 # Delete a file or directory if it is not a link.

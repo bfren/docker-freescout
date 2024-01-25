@@ -22,7 +22,7 @@ def main [] {
     }
 
     # set permissions
-    bf write "Setting permissions on data directory."
+    bf write "Setting standard permissions."
     bf-freescout perms set
 }
 
