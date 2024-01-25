@@ -17,11 +17,12 @@ def main [] {
         move_if_not_link (bf env FS_SRC_ATTACHMENTS) $fs_data
         move_if_not_link (bf env FS_SRC_LOGS) $fs_data
         move_if_not_link (bf env FS_SRC_MODULES) $fs_data
-        move_if_not_link (bf env FS_SRC_PUBLIC_STORAGE) $fs_data
+        move_if_not_link (bf env FS_SRC_APP_STORAGE) $fs_data
     } else {
         delete_if_not_link (bf env FS_SRC_ATTACHMENTS)
         delete_if_not_link (bf env FS_SRC_LOGS)
         delete_if_not_link (bf env FS_SRC_MODULES)
+        delete_if_not_link (bf env FS_SRC_APP_STORAGE)
         delete_if_not_link (bf env FS_SRC_PUBLIC_STORAGE)
     }
 }
