@@ -17,6 +17,8 @@ def main [] {
     ls $fs_modules | where type == dir | get name | each {|x|
         create_if_not_link $"($fs_src_public_modules)/($x | path basename)" $x
     }
+
+    return
 }
 
 # Create a link to a target if the link does not exist.
