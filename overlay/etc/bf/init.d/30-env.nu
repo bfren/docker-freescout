@@ -14,6 +14,7 @@ def main [] {
     let fs_src = bf env FS_SRC
     bf env set FS_SRC_ENV $"($fs_src)/.env"
     bf env set FS_SRC_MODULES $"($fs_src)/Modules"
+    bf env set FS_SRC_BOOSTRAP_CACHE $"($fs_src)/bootstrap/cache"
 
     let fs_public = $"($fs_src)/public"
     bf env set FS_SRC_PUBLIC $fs_public
