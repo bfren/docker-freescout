@@ -8,6 +8,7 @@
 -mbstring
 -mysqli
 -mysqlnd
+-pcntl
 -pdo_mysql
 -tokenizer
 -xml
