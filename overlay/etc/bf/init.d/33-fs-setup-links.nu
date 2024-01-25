@@ -6,6 +6,7 @@ def main [] {
     if (bf env FS_ENV | bf fs is_not_file) { bf write error "FreeScout environment file cannot be found." }
 
     # link source to /data
+    bf write "Linking source to volume..."
     create_if_not_link (bf env FS_SRC_ENV) (bf env FS_ENV)
     create_if_not_link (bf env FS_SRC_MODULES) (bf env FS_MODULES)
     create_if_not_link (bf env FS_SRC_STORAGE) (bf env FS_STORAGE)
@@ -24,7 +25,7 @@ def create_if_not_link [
     target: string  # Target to use if $link does not exist
 ] {
     if ($link | bf fs is_not_symlink) {
-        bf write $"Linking ($link) to ($target)."
+        bf write debug $" .. ($link) to ($target)"
         rm --force --recursive $link
         ^ln -s $target $link
     }
