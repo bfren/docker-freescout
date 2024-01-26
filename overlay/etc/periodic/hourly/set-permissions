@@ -1,0 +1,8 @@
+#!/usr/bin/nu
+
+use bf
+use bf-freescout
+bf env load -x
+
+# Ensure permissions are set correctly
+def main [] { bf-freescout perms set }
