@@ -20,10 +20,6 @@ def main [] {
         let module_name = $x | path basename | str downcase
         create_if_not_link $"(bf env FS_SRC_PUBLIC_MODULES)/($module_name)" $"($x)/Public"
     }
-
-    # set permissions
-    bf write "Setting standard permissions."
-    bf-freescout perms set
 }
 
 # Create a link to a target if the link does not exist.
