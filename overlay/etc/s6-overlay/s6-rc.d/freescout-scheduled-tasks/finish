@@ -2,7 +2,7 @@
 
 use bf
 use bf-s6
-bf env load -x scheduled-tasks
+bf env load -x freescout-scheduled-tasks
 
 # Show helpful log message
 def main [...args] { bf-s6 svc finish }
