@@ -21,7 +21,7 @@ def main [] {
 
     # cleanup
     bf write "Removing /www files and directories."
-    rm -rf /www/*
+    bf del force /www/*
 }
 
 # Download and install FreeScout source files
