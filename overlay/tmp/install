@@ -28,7 +28,7 @@ def main [] {
 def install_source [] {
     # add dependencies
     bf write "Adding installation dependencies." install_source
-    bf pkg install ["--virtual .install" "git"]
+    bf pkg install ["--virtual" ".install" "git"]
 
     # get version
     let fs_version = bf fs read FREESCOUT_REVISION
