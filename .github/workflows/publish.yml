@@ -77,6 +77,7 @@ jobs:
           file: ./php${{ matrix.php }}/Dockerfile
           build-args: |
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
+            BF_PUBLISHING=1
             BF_VERSION=${{ steps.version.outputs.contents }}
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64
@@ -90,6 +91,15 @@ jobs:
             bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}
             bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
             bfren/freescout:php${{ steps.php_revision.outputs.contents }}
+            ghcr.io/bfren/freescout:php${{ matrix.php }}
+            ghcr.io/bfren/freescout:php${{ matrix.php }}-${{ steps.version_major.outputs.contents }}
+            ghcr.io/bfren/freescout:php${{ matrix.php }}-${{ steps.version_minor.outputs.contents }}
+            ghcr.io/bfren/freescout:php${{ matrix.php }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_minor.outputs.contents }}
+            ghcr.io/bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}
+            ghcr.io/bfren/freescout:php${{ matrix.php }}-freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:php${{ steps.php_revision.outputs.contents }}
       -
         name: Build and push default tags
         id: docker_build_default
@@ -100,12 +110,15 @@ jobs:
           file: ./php${{ matrix.php }}/Dockerfile
           build-args: |
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
+            BF_PUBLISHING=1
             BF_VERSION=${{ steps.version.outputs.contents }}
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}
             bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}
+            ghcr.io/bfren/freescout:freescout${{ steps.freescout_version.outputs.contents }}-${{ steps.version.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
