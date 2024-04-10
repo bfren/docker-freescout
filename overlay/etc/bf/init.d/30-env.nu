@@ -17,16 +17,17 @@ def main [] {
     bf env set FS_SRC_BOOSTRAP_CACHE $"($fs_src)/bootstrap/cache"
 
     let fs_public = $"($fs_src)/public"
+    let fs_storage = $"($fs_public)/storage"
     bf env set FS_SRC_PUBLIC $fs_public
     bf env set FS_SRC_PUBLIC_CSS_BUILDS $"($fs_public)/css/builds"
     bf env set FS_SRC_PUBLIC_JS_BUILDS $"($fs_public)/js/builds"
     bf env set FS_SRC_PUBLIC_MODULES $"($fs_public)/modules"
-    bf env set FS_SRC_PUBLIC_STORAGE $"($fs_public)/storage"
+    bf env set FS_SRC_PUBLIC_STORAGE $fs_storage
+    bf env set FS_SRC_PUBLIC_ATTACHMENTS $"($fs_storage)/attachments"
 
     let fs_storage = $"($fs_src)/storage"
     bf env set FS_SRC_STORAGE $fs_storage
     bf env set FS_SRC_STORAGE_APP $"($fs_storage)/app/public"
-    bf env set FS_SRC_STORAGE_ATTACHMENTS $"($fs_storage)/attachment"
     bf env set FS_SRC_STORAGE_CACHE $"($fs_storage)/framework/cache/data"
     bf env set FS_SRC_STORAGE_LOGS $"($fs_storage)/logs"
 }
