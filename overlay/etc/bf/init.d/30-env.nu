@@ -26,7 +26,7 @@ def main [] {
     let fs_storage = $"($fs_src)/storage"
     bf env set FS_SRC_STORAGE $fs_storage
     bf env set FS_SRC_STORAGE_APP $"($fs_storage)/app/public"
-    bf env set FS_SRC_STORAGE_ATTACHMENTS $"($fs_storage)/attachments"
+    bf env set FS_SRC_STORAGE_ATTACHMENTS $"($fs_storage)/attachment"
     bf env set FS_SRC_STORAGE_CACHE $"($fs_storage)/framework/cache/data"
     bf env set FS_SRC_STORAGE_LOGS $"($fs_storage)/logs"
 }
