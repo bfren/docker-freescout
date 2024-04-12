@@ -16,4 +16,4 @@ nu -c "use bf-freescout run ; run preflight"
 #======================================================================================================================
 
 SRC=$(bf-env FS_SRC)
-php ${SRC}/artisan schedule:run >> /dev/null 2>&1
+php ${SRC}/artisan schedule:run
