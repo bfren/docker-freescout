@@ -1,9 +1,5 @@
 use bf
+use bf-s6
 bf env load
 
-def main [] {
-    # generate fetch email cron script
-    let fetch_emails = $"(bf env CRON_D)/1min/fetch-emails"
-    bf write $"Generating ($fetch_emails)."
-    bf esh template $fetch_emails
-}
+def main [] { bf-s6 crontab generate_template "1min" "fetch-emails" }
