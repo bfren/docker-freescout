@@ -1,4 +1,4 @@
-FROM bfren/nginx-php:php8.1-7.2.8
+FROM bfren/nginx-php:php8.1.29-7.2.9
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-freescout"
 
