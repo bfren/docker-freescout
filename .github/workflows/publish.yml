@@ -78,7 +78,7 @@ jobs:
       -
         name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./php${{ matrix.php }}/Dockerfile
@@ -111,7 +111,7 @@ jobs:
         name: Build and push default tags
         id: docker_build_default
         if: matrix.php == '8.2'
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./php${{ matrix.php }}/Dockerfile
