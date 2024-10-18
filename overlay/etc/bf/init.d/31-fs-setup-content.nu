@@ -36,7 +36,7 @@ def delete_if_not_link [
 ] {
     if ($path | bf fs is_not_symlink) {
         bf write debug $" .. deleting ($path) so it can be turned into a symlink."
-        bf del force $path
+        rm --force --recursive $path
     }
 }
 
