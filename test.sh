@@ -2,7 +2,7 @@
 
 IMAGE=freescout
 VERSION=`cat VERSION`
-PHP=${1:-8.3}
+PHP=${1:-8.4}
 TAG=${IMAGE}-test
 
 docker buildx build \

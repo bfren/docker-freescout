@@ -1,4 +1,4 @@
-FROM ghcr.io/bfren/nginx-php:php8.1.30-7.3.0
+FROM ghcr.io/bfren/nginx-php:php8.4.1-7.3.0
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-freescout"
 
@@ -7,7 +7,7 @@ ARG BF_PUBLISHING
 ARG BF_VERSION
 
 COPY ./overlay /
-COPY ./php8.1/overlay /
+COPY ./php8.4/overlay /
 
 ENV \
     # set to the application's external URL
