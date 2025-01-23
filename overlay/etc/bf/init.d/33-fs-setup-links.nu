@@ -31,8 +31,11 @@ def create_if_not_link [
 ] {
     if ($link | bf fs is_not_symlink) {
         bf write debug $" .. ($link) to ($target)"
+        if not ($target | path exists) {
+            mkdir $target
+        }
+
         rm --force $link
-        mkdir $target
         ^ln -s $target $link
     }
 }
