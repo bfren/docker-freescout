@@ -19,5 +19,5 @@ def apply [
     path: string    # Apply standard permissions to this path
 ] {
     bf write $"Setting permissions for ($path)." perms/set
-    [$path $user 0664 0775] | bf ch apply
+    [$path $user "0664" "0775"] | bf ch apply
 }
